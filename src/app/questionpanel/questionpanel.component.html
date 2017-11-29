@@ -157,7 +157,7 @@
       <mat-card id="checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ''}}">
           <mat-icon>check_box</mat-icon>
       </mat-card>
-      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', thingsToRate: '', ratings: ''}}">
+      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: '', ratings: ''}}">
         <mat-icon>view_module</mat-icon>
       </mat-card>
     </section>
@@ -167,15 +167,15 @@
     <!-- <p *ngIf="editQuestionType == 'profile'">Profile</p> -->
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'text'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -183,31 +183,31 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
       </mat-form-field>
       <p>Border Radius:</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.borderRadius">
-        <mat-button-toggle value="0px">Square</mat-button-toggle>
-        <mat-button-toggle value="5px">Slightly Rounded</mat-button-toggle>
-        <mat-button-toggle value="10px">Very Rounded</mat-button-toggle>
+        <mat-button-toggle value="0px"><mat-icon>border_style</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="5px"><mat-icon>rounded_corner</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="10px"><mat-icon>radio_button_unchecked</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
 
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'textarea'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -215,31 +215,31 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
       </mat-form-field>
       <p>Border Radius:</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.borderRadius">
-        <mat-button-toggle value="0px">Square</mat-button-toggle>
-        <mat-button-toggle value="5px">Slightly Rounded</mat-button-toggle>
-        <mat-button-toggle value="10px">Very Rounded</mat-button-toggle>
+        <mat-button-toggle value="0px"><mat-icon>border_style</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="5px"><mat-icon>rounded_corner</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="10px"><mat-icon>radio_button_unchecked</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'email'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -247,31 +247,31 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
       </mat-form-field>
       <p>Border Radius:</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.borderRadius">
-        <mat-button-toggle value="0px">Square</mat-button-toggle>
-        <mat-button-toggle value="5px">Slightly Rounded</mat-button-toggle>
-        <mat-button-toggle value="10px">Very Rounded</mat-button-toggle>
+        <mat-button-toggle value="0px"><mat-icon>border_style</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="5px"><mat-icon>rounded_corner</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="10px"><mat-icon>radio_button_unchecked</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'address'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -279,31 +279,31 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
       </mat-form-field>
       <p>Border Radius:</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.borderRadius">
-        <mat-button-toggle value="0px">Square</mat-button-toggle>
-        <mat-button-toggle value="5px">Slightly Rounded</mat-button-toggle>
-        <mat-button-toggle value="10px">Very Rounded</mat-button-toggle>
+        <mat-button-toggle value="0px"><mat-icon>border_style</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="5px"><mat-icon>rounded_corner</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="10px"><mat-icon>radio_button_unchecked</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'phone'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -311,28 +311,28 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
       </mat-form-field>
       <p>Border Radius:</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.borderRadius">
-        <mat-button-toggle value="0px">Square</mat-button-toggle>
-        <mat-button-toggle value="5px">Slightly Rounded</mat-button-toggle>
-        <mat-button-toggle value="10px">Very Rounded</mat-button-toggle>
+        <mat-button-toggle value="0px"><mat-icon>border_style</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="5px"><mat-icon>rounded_corner</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="10px"><mat-icon>radio_button_unchecked</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'select'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -340,19 +340,19 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'radio'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -360,19 +360,19 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'checkbox'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -380,19 +380,19 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'grid'">
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <mat-form-field floatPlaceholder="always">
+      <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
@@ -400,9 +400,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left">Left</mat-button-toggle>
-        <mat-button-toggle value="center">Center</mat-button-toggle>
-        <mat-button-toggle value="right">Right</mat-button-toggle>
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
   </mat-sidenav> 

@@ -68,6 +68,10 @@ mat-sidenav-container {
   flex-direction: column;
 }
 
+mat-button-toggle-group {
+  width: 50%;
+}
+
 .mat-button-toggle-checked {
   background-color: dodgerblue;
   color: #ffffff;
