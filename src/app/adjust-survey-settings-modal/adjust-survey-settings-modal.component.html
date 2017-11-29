@@ -1,0 +1,44 @@
+<h4>{{ data.name }} Settings</h4>
+
+<mat-form-field floatPlaceholder="always">
+  <input matInput placeholder="Background color" [(ngModel)]="backgroundColor">
+</mat-form-field>
+
+<mat-form-field floatPlaceholder="always">
+  <input matInput placeholder="Border" [(ngModel)]="border">
+</mat-form-field>
+
+<p>Border Radius:</p>
+<mat-button-toggle-group [(ngModel)]="borderRadius">
+  <mat-button-toggle value="0px">Square</mat-button-toggle>
+  <mat-button-toggle value="5px">Slightly Rounded</mat-button-toggle>
+  <mat-button-toggle value="10px">Very Rounded</mat-button-toggle>
+</mat-button-toggle-group>
+
+<p>Font:</p>
+<mat-select [(ngModel)]="font" placeholder="Font">
+  <mat-option value="Arial">Arial</mat-option>
+  <mat-option value="Times">Times</mat-option>
+</mat-select>
+
+<mat-form-field floatPlaceholder="always">
+  <input matInput placeholder="Font Size" [(ngModel)]="fontSize">
+</mat-form-field>
+
+<mat-form-field floatPlaceholder="always">
+  <input matInput placeholder="Padding" [(ngModel)]="padding">
+</mat-form-field>
+
+<mat-form-field floatPlaceholder="always">
+  <input matInput placeholder="Send Results to:" [(ngModel)]="resultsEmail">
+</mat-form-field>
+
+<mat-form-field floatPlaceholder="always">
+  <input matInput placeholder="Survey Width" [(ngModel)]="width">
+</mat-form-field>
+
+<mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close]="true" (click)="saveSurveySettings()">SAVE SETTINGS</button>
+</mat-dialog-actions>
+
+

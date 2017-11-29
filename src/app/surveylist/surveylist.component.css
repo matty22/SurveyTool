@@ -1,0 +1,33 @@
+button {
+  background-color: #0d95f3;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+mat-list {
+  color: #f0f0f0;
+  font-weight: 600;
+  background-color: #54606F;
+  margin-bottom: 5px;
+  padding-left: 3px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  min-height: 28px;
+}
+
+mat-list:hover {
+  background-color: #6d7d90;
+}
+
+mat-list mat-icon:last-child {
+  margin-right: 5px;
+}
+
+mat-list mat-icon:hover {
+  background-color: #bbc2bc;
+  box-shadow: 0px 2px 5px inset #e6e6e6;
+  color: #262626;
+  outline: 1px solid #f0f0f0;
+}

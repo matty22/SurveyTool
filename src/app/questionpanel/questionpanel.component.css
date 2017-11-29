@@ -1,0 +1,74 @@
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 0px 0px 20px;
+  background-color: #ffffff;
+  height: 100%;
+  overflow: hidden;
+}
+
+#bank {
+  width: 150px;
+  display: grid;
+  padding-top: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  max-height: 400px;
+}
+
+#bank mat-card {
+  height: 30px;
+}
+
+#dropzone {
+  width: 500px;
+  border: 1px dashed green;
+  background-color: #ffffff;
+  padding: 10px 10px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.surveyQuestion {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 30px;
+}
+
+.surveyQuestion label {
+  padding-right: 5px;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.surveyQuestion mat-icon:hover {
+  background-color: #f7f7f7;
+  box-shadow: 0px 2px 5px inset #e6e6e6
+}
+
+mat-sidenav {
+  color: #ffffff;
+  padding: 20px 10px;
+  background-color: #3F4752;
+  width: 350px;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+.questionSettingsSideNavForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-button-toggle-checked {
+  background-color: dodgerblue;
+  color: #ffffff;
+}

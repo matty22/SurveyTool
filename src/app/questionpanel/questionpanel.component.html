@@ -1,0 +1,349 @@
+<mat-sidenav-container>
+  <div class="wrapper">
+    <section *ngIf="survey">
+      <h4>{{ survey.name }}</h4>
+      <div dnd-droppable (onDropSuccess)="addQuestionToSurvey($event)" id="dropzone">
+        <div *ngFor="let question of survey.questions; index as i;" (mouseenter)="hoveredIndex = i" (mouseleave)="hoveredIndex = null" [ngSwitch]="question.type">
+
+          <!-- If question type is text -->
+          <div class="surveyQuestion" *ngSwitchCase="'text'">
+            <div>
+                <label>{{ question.label }}</label>
+                <input type="text" disabled>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is radio -->
+          <div class="surveyQuestion" *ngSwitchCase="'radio'">
+            <div>
+                <label>{{ question.label }}</label>
+                <input type="radio" disabled>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+              <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>  
+              <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is checkbox -->
+          <div class="surveyQuestion" *ngSwitchCase="'checkbox'">
+            <div>
+                <label>{{ question.label }}</label>
+                <input type="checkbox" disabled>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is select list -->
+          <div class="surveyQuestion" *ngSwitchCase="'select'">
+            <div>
+                <label>{{ question.label }}</label>
+                <select disabled><option>Default</option></select>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is textarea -->
+          <div class="surveyQuestion" *ngSwitchCase="'textarea'">
+            <div>
+                <label>{{ question.label }}</label>
+                <textarea cols="20" rows="3" disabled></textarea>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is profile -->
+          <div class="surveyQuestion" *ngSwitchCase="'profile'">
+            <div>
+                <label>{{ question.label }}</label>
+                <input type="text" disabled>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is grid -->
+          <div class="surveyQuestion" *ngSwitchCase="'grid'">
+            <div>
+                <label>{{ question.label }}</label>
+                <input type="radio" disabled>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is phone -->
+          <div class="surveyQuestion" *ngSwitchCase="'phone'">
+            <div>
+                <label>{{ question.label }}</label>
+                <input type="text" disabled>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is email -->
+          <div class="surveyQuestion" *ngSwitchCase="'email'">
+            <div>
+                <label>{{ question.label }}</label>
+                <input type="email" disabled>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+          
+          <!-- If question type is address -->
+          <div class="surveyQuestion" *ngSwitchCase="'address'">
+            <div>
+                <label>{{ question.label }}</label>
+                <input type="text" disabled>
+            </div>
+            <div *ngIf="i == hoveredIndex" id="iconBlock">
+                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section *ngIf="survey" id="bank">
+      <!-- I'm not sure this type of question makes sense anymore -->
+      <!-- <mat-card id="profile" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Profile Question', type: 'profile'}">
+        <mat-icon>account_box</mat-icon>
+      </mat-card> -->
+      <mat-card id="text" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'text', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+        <mat-icon>short_text</mat-icon>
+      </mat-card>
+      <mat-card id="longText" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'textarea', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+        <mat-icon>subject</mat-icon>
+      </mat-card>
+      <mat-card id="email" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your email: ', type: 'email', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+        <mat-icon>mail_outline</mat-icon>
+      </mat-card>
+      <mat-card id="address" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your address: ', type: 'address', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+        <mat-icon>place</mat-icon>
+      </mat-card>
+      <mat-card id="phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your phone number: ', type: 'phone', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+        <mat-icon>phone</mat-icon>
+      </mat-card>
+      <mat-card id="dropdown" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ''}}">
+        <mat-icon>toc</mat-icon>
+      </mat-card>
+      <mat-card id="radio" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ''}}">
+        <mat-icon>radio_button_checked</mat-icon>
+      </mat-card>
+      <mat-card id="checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ''}}">
+          <mat-icon>check_box</mat-icon>
+      </mat-card>
+      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', thingsToRate: '', ratings: ''}}">
+        <mat-icon>view_module</mat-icon>
+      </mat-card>
+    </section>
+  </div>
+  <mat-sidenav position="end" #sidenav [ngSwitch]="editQuestionType">
+    <!-- May remove profile type questions entirely -->
+    <!-- <p *ngIf="editQuestionType == 'profile'">Profile</p> -->
+    
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'text'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'textarea'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'email'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'address'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'phone'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'select'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'radio'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'checkbox'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    
+    <div class="questionSettingsSideNavForm" *ngSwitchCase="'grid'">
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
+      </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <mat-form-field floatPlaceholder="always">
+        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
+        <mat-button-toggle value="left">Left</mat-button-toggle>
+        <mat-button-toggle value="center">Center</mat-button-toggle>
+        <mat-button-toggle value="right">Right</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </mat-sidenav> 
+</mat-sidenav-container> 

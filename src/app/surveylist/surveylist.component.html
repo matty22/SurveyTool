@@ -1,0 +1,13 @@
+<button mat-raised-button (click)="newSurveyDialog()">CREATE NEW SURVEY</button>
+<mat-list 
+  *ngFor="let survey of surveys; index as i" 
+  (mouseenter)="hoveredIndex = i" 
+  (mouseleave)="hoveredIndex = null"
+  (click)="chooseSurveyToEdit(survey)">{{ survey.name }}
+  <div *ngIf="i == hoveredIndex">
+    <mat-icon (click)="adjustSurveySettings(survey)">settings</mat-icon>
+    <mat-icon (click)="deleteSurvey(survey)">delete</mat-icon>
+  </div>
+</mat-list>
+ 
+ 

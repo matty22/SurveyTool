@@ -1,0 +1,14 @@
+
+mat-form-field {
+  display: flex;
+}
+
+button {
+  background-color: dodgerblue;
+  color: #ffffff;;
+}
+
+.mat-button-toggle-checked {
+  background-color: dodgerblue;
+  color: #ffffff;
+}
