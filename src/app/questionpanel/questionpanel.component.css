@@ -76,3 +76,14 @@ mat-button-toggle-group {
   background-color: dodgerblue;
   color: #ffffff;
 }
+
+#questionOptionList {
+  display: flex;
+  align-items: center;
+}
+
+#addInputButton {
+  border: none;
+  background: none;
+  color: #ffffff;
+}

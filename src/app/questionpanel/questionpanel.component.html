@@ -148,16 +148,16 @@
       <mat-card id="phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your phone number: ', type: 'phone', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
         <mat-icon>phone</mat-icon>
       </mat-card>
-      <mat-card id="dropdown" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ''}}">
+      <mat-card id="dropdown" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option']}}">
         <mat-icon>toc</mat-icon>
       </mat-card>
-      <mat-card id="radio" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ''}}">
+      <mat-card id="radio" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option']}}">
         <mat-icon>radio_button_checked</mat-icon>
       </mat-card>
-      <mat-card id="checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ''}}">
+      <mat-card id="checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option']}}">
           <mat-icon>check_box</mat-icon>
       </mat-card>
-      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: '', ratings: ''}}">
+      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option'], ratings: ''}}">
         <mat-icon>view_module</mat-icon>
       </mat-card>
     </section>
@@ -344,6 +344,13 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
+      <!-- BUG IS FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
+      <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
+      <p>Answer Options</p>
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
+        <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
+        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+      </div>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'radio'">
@@ -364,6 +371,13 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
+      <!-- BUG IS FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
+      <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
+      <p>Answer Options</p>
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
+        <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
+        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+      </div>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'checkbox'">
@@ -384,6 +398,13 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
+      <!-- BUG IS FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
+      <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
+      <p>Answer Options</p>
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
+        <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
+        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+      </div>
     </div>
     
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'grid'">
@@ -404,6 +425,13 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
+      <!-- BUG IS FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
+      <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
+      <p>Answer Options</p>
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
+        <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
+        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+      </div>
     </div>
   </mat-sidenav> 
 </mat-sidenav-container> 

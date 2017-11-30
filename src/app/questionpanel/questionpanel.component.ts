@@ -13,13 +13,23 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   @Input() survey: any;
   showIcons: boolean = true;
   editQuestionType: string;
-  questionToEdit: object;
+  questionToEdit = {
+    label: '', 
+    type: '', 
+    options: {
+      hideQuestion: '', 
+      responseRequired: '', 
+      padding: '', 
+      color: '', 
+      align: '', 
+      questionOptions: []
+    }
+  };
   constructor(private surveylistService: SurveylistService) {
 
   }
 
   ngOnInit() {
-    
   }
 
   ngOnChanges() {
@@ -29,11 +39,15 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   adjustQuestionSettings(question) {
     this.questionToEdit = question;
     this.editQuestionType = question.type;
-    console.log(this.questionToEdit);
   }
 
   addQuestionToSurvey($event) {
     this.surveylistService.addQuestionToSurvey(this.survey.id, $event.dragData);
+  }
+
+  // Add possible options for select lists, radio buttons, checkboxes, and grids
+  addQuestionOption() {
+    this.questionToEdit.options.questionOptions.push('New Option');
   }
 
   // Delete a question from a survey
