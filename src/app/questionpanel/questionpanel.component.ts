@@ -13,8 +13,9 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   @Input() survey: any;
   showIcons: boolean = true;
   editQuestionType: string;
-  tempQuestionOption: string[] = [" "];
+  tempQuestionOptions: string[] = [" "];
   tempRatings: string[] = [" "];
+  questionIndex: number;
   questionToEdit:any = {
     label: '', 
     type: '', 
@@ -41,6 +42,7 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
 
   // Adjust style settings for individual question
   adjustQuestionSettings(question) {
+    this.questionIndex = this.survey.questions.indexOf(question);
     this.questionToEdit = question;
     this.editQuestionType = question.type;
   }
@@ -54,18 +56,18 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
       this.surveylistService.deleteQuestion(survey, question);
   }
 
-  // This is a hacky solution to fix my problem with adding radio, checkbox, and grid question options
+  // This is a temporary hacky solution to fix my problem with adding radio, checkbox, and grid question options
   addQuestionOption() {
-    this.tempQuestionOption.push(" ");
+    this.tempQuestionOptions.push(" ");
   }
 
-  // This is a hacky solution to fix my problem with adding grid rating options
+  // This is a temporary hacky solution to fix my problem with adding grid rating options
   addRatingOption() {
     this.tempRatings.push(" ");
   }
 
   // Temporary method for testing data binding
   saveQuestionSettings() {
-    console.log(this.questionToEdit.options);
+    this.surveylistService.saveQuestionSettings(this.survey, this.questionIndex, this.questionToEdit);
   }
 }

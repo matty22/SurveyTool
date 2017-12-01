@@ -1,8 +1,8 @@
 <mat-sidenav-container>
+  <!-- EDITOR BODY -->
   <div class="wrapper">
     <section *ngIf="survey">
       <h4>{{ survey.name }}</h4>
-      {{tempRatings}} asdfasdf
       <div dnd-droppable (onDropSuccess)="addQuestionToSurvey($event)" id="dropzone">
         <div *ngFor="let question of survey.questions; index as i;" (mouseenter)="hoveredIndex = i" (mouseleave)="hoveredIndex = null" [ngSwitch]="question.type">
 
@@ -129,11 +129,9 @@
         </div>
       </div>
     </section>
+
+    <!-- QUESTION BANK -->
     <section *ngIf="survey" id="bank">
-      <!-- I'm not sure this type of question makes sense anymore -->
-      <!-- <mat-card id="profile" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Profile Question', type: 'profile'}">
-        <mat-icon>account_box</mat-icon>
-      </mat-card> -->
       <mat-card id="text" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'text', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
         <mat-icon>short_text</mat-icon>
       </mat-card>
@@ -163,11 +161,11 @@
       </mat-card>
     </section>
   </div>
-
-  <mat-sidenav position="end" #sidenav [ngSwitch]="editQuestionType">
-    <!-- May remove profile type questions entirely -->
-    <!-- <p *ngIf="editQuestionType == 'profile'">Profile</p> -->
+  
+  <!--  QUESTION SETTINGS SIDENAV -->
+  <mat-sidenav position="end" #sidenav (close)="tempQuestionOptions = [' ']" (close)="tempRatings = [' ']" [ngSwitch]="editQuestionType">
     
+    <!-- TEXT QUESTION --> 
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'text'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -200,6 +198,7 @@
       </mat-button-toggle-group>
     </div>
 
+    <!-- TEXT AREA -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'textarea'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -232,6 +231,7 @@
       </mat-button-toggle-group>
     </div>
     
+    <!-- EMAIL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'email'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -264,6 +264,7 @@
       </mat-button-toggle-group>
     </div>
     
+    <!-- ADDRESS -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'address'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -296,6 +297,7 @@
       </mat-button-toggle-group>
     </div>
     
+    <!-- PHONE -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'phone'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -328,6 +330,7 @@
       </mat-button-toggle-group>
     </div>
     
+    <!-- SELECT -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'select'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -346,15 +349,14 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
-      <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOption; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
     
+    <!-- RADIO -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'radio'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -373,15 +375,14 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
-      <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOption; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
     
+    <!-- CHECKBOX -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'checkbox'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -400,15 +401,14 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
-      <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOption; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
     
+    <!-- GRID -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'grid'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -427,10 +427,8 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
-      <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOption; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
