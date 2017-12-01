@@ -52,3 +52,7 @@ Body text
 Images
 Horizontal Row Divider
 Spacer
+
+## Known deficiencies
+The hacky way I am adding question options and ratings to radio, checkbox, and grid type questions
+CSS everywhere
