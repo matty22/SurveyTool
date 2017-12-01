@@ -2,6 +2,7 @@
   <div class="wrapper">
     <section *ngIf="survey">
       <h4>{{ survey.name }}</h4>
+      {{tempRatings}} asdfasdf
       <div dnd-droppable (onDropSuccess)="addQuestionToSurvey($event)" id="dropzone">
         <div *ngFor="let question of survey.questions; index as i;" (mouseenter)="hoveredIndex = i" (mouseleave)="hoveredIndex = null" [ngSwitch]="question.type">
 
@@ -157,11 +158,12 @@
       <mat-card id="checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option']}}">
           <mat-icon>check_box</mat-icon>
       </mat-card>
-      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option'], ratings: ''}}">
+      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option'], ratings: ['New Rating']}}">
         <mat-icon>view_module</mat-icon>
       </mat-card>
     </section>
   </div>
+
   <mat-sidenav position="end" #sidenav [ngSwitch]="editQuestionType">
     <!-- May remove profile type questions entirely -->
     <!-- <p *ngIf="editQuestionType == 'profile'">Profile</p> -->
@@ -344,7 +346,7 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <!-- BUG IS FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
+      <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
       <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
@@ -371,7 +373,7 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <!-- BUG IS FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
+      <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
       <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
@@ -398,7 +400,7 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <!-- BUG IS FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
+      <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
       <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
@@ -425,13 +427,19 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
-      <!-- BUG IS FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
+      <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
       <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
-        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption(question)"><mat-icon>add_circle_outline</mat-icon></button>
+      </div>
+      <p>Rating Options</p>
+      <div id="questionOptionList" *ngFor="let rating of tempRatings; index as i; last as isLast;">
+        <input type="text" [(ngModel)]="tempRatings[i]">
+        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addRatingOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
+    <button (click)="printObj()">Check</button>
   </mat-sidenav> 
 </mat-sidenav-container> 

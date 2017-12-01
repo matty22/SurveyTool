@@ -13,7 +13,8 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   @Input() survey: any;
   showIcons: boolean = true;
   editQuestionType: string;
-  questionToEdit = {
+
+  questionToEdit:any = {
     label: '', 
     type: '', 
     options: {
@@ -22,7 +23,8 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
       padding: '', 
       color: '', 
       align: '', 
-      questionOptions: []
+      questionOptions: [],
+      ratings: []
     }
   };
   constructor(private surveylistService: SurveylistService) {
@@ -33,6 +35,7 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+    
   }
 
   // Adjust style settings for individual question
@@ -45,13 +48,14 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
     this.surveylistService.addQuestionToSurvey(this.survey.id, $event.dragData);
   }
 
-  // Add possible options for select lists, radio buttons, checkboxes, and grids
-  addQuestionOption() {
-    this.questionToEdit.options.questionOptions.push('New Option');
-  }
-
   // Delete a question from a survey
   deleteQuestion(survey, question) {
       this.surveylistService.deleteQuestion(survey, question);
+  }
+
+  printObj() {
+    if (this.questionToEdit.type == "grid" || this.questionToEdit.type == "radio" || this.questionToEdit == "checkbox" ) {
+      console.log("yes");
+    }
   }
 }
