@@ -349,7 +349,7 @@
       <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
       <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of tempQuestionOption; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
@@ -376,7 +376,7 @@
       <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
       <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of tempQuestionOption; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
@@ -403,7 +403,7 @@
       <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
       <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of tempQuestionOption; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
@@ -430,16 +430,16 @@
       <!-- BUG IN FORM CONTROL BELOW. HITTING BACKSPACE MAKES FOCUS LEAVE THIS FORM CONTROL -->
       <!-- BACKSPACE TWICE IN A ROW AND BROWSER NAVIGATES BACK -->
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of tempQuestionOption; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
-        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption(question)"><mat-icon>add_circle_outline</mat-icon></button>
+        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
       <p>Rating Options</p>
       <div id="questionOptionList" *ngFor="let rating of tempRatings; index as i; last as isLast;">
-        <input type="text" [(ngModel)]="tempRatings[i]">
+        <input type="text" [(ngModel)]="questionToEdit.options.ratings[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addRatingOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
-    <button (click)="printObj()">Check</button>
+    <button id="saveQuestionSettingsButton" mat-raised-button (click)="saveQuestionSettings()">SAVE SETTINGS</button>
   </mat-sidenav> 
 </mat-sidenav-container> 

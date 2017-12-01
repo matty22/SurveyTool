@@ -87,3 +87,8 @@ mat-button-toggle-group {
   background: none;
   color: #ffffff;
 }
+
+#saveQuestionSettingsButton {
+  background-color: dodgerblue;
+  color: #ffffff;
+}
