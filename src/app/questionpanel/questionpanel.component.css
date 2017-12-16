@@ -35,12 +35,38 @@
   margin-bottom: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   min-height: 30px;
+}
+
+.questionSide {
+  margin-right: 50px;
+}
+
+.iconBlock {
+  position: absolute;
+  left: 55%;
 }
 
 .surveyQuestion label {
   padding-right: 5px;
+}
+
+.surveyQuestion input {
+  background-color: transparent;
+  height: 20px;
+  padding: 0px 5px;
+}
+
+.surveyQuestion textarea {
+  font-family: Arial, sans-serif;
+  font-size: 0.8em;
+  padding: 5px 5px;
+  background-color: transparent;
+}
+
+.requiredStar {
+  color: #ff0000;
 }
 
 mat-icon {

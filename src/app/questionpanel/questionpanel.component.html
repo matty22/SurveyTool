@@ -7,125 +7,124 @@
         <div *ngFor="let question of survey.questions; index as i;" (mouseenter)="hoveredIndex = i" (mouseleave)="hoveredIndex = null" [ngSwitch]="question.type">
 
           <!-- If question type is text -->
-          <div class="surveyQuestion" *ngSwitchCase="'text'">
-            <div>
-                <label>{{ question.label }}</label>
-                <input type="text" disabled>
+          <div class="surveyQuestion" *ngSwitchCase="'text'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text" disabled>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is radio -->
-          <div class="surveyQuestion" *ngSwitchCase="'radio'">
-            <div>
-                <label>{{ question.label }}</label>
+          <div class="surveyQuestion" *ngSwitchCase="'radio'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <input type="radio" disabled>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>  
               <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is checkbox -->
-          <div class="surveyQuestion" *ngSwitchCase="'checkbox'">
-            <div>
-                <label>{{ question.label }}</label>
+          <div class="surveyQuestion" *ngSwitchCase="'checkbox'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <input type="checkbox" disabled>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is select list -->
-          <div class="surveyQuestion" *ngSwitchCase="'select'">
-            <div>
-                <label>{{ question.label }}</label>
+          <div class="surveyQuestion" *ngSwitchCase="'select'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <select disabled><option>Default</option></select>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is textarea -->
-          <div class="surveyQuestion" *ngSwitchCase="'textarea'">
-            <div>
-                <label>{{ question.label }}</label>
-                <textarea cols="20" rows="3" disabled></textarea>
+          <div class="surveyQuestion" *ngSwitchCase="'textarea'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
+                <textarea [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" cols="20" rows="3" disabled></textarea>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is profile -->
-          <div class="surveyQuestion" *ngSwitchCase="'profile'">
-            <div>
-                <label>{{ question.label }}</label>
-                <input type="text" disabled>
+          <div class="surveyQuestion" *ngSwitchCase="'profile'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text" disabled>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is grid -->
-          <div class="surveyQuestion" *ngSwitchCase="'grid'">
-            <div>
-                <label>{{ question.label }}</label>
+          <div class="surveyQuestion" *ngSwitchCase="'grid'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <input type="radio" disabled>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is phone -->
-          <div class="surveyQuestion" *ngSwitchCase="'phone'">
-            <div>
-                <label>{{ question.label }}</label>
-                <input type="text" disabled>
+          <div class="surveyQuestion" *ngSwitchCase="'phone'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text" disabled>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is email -->
-          <div class="surveyQuestion" *ngSwitchCase="'email'">
-            <div>
-                <label>{{ question.label }}</label>
-                <input type="email" disabled>
+          <div class="surveyQuestion" *ngSwitchCase="'email'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="email" disabled>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
           
           <!-- If question type is address -->
-          <div class="surveyQuestion" *ngSwitchCase="'address'">
-            <div>
-                <label>{{ question.label }}</label>
-                <input type="text" disabled>
+          <div class="surveyQuestion" *ngSwitchCase="'address'" [ngStyle]="{'justify-content': question.options.align}">
+            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text" disabled>
             </div>
-            <div *ngIf="i == hoveredIndex" id="iconBlock">
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -183,9 +182,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
@@ -216,9 +215,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
@@ -249,9 +248,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
@@ -282,9 +281,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
@@ -315,9 +314,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.border" placeholder="Border">
@@ -345,9 +344,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
@@ -371,9 +370,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
@@ -397,9 +396,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
@@ -423,9 +422,9 @@
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
