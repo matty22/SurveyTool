@@ -131,31 +131,31 @@
 
     <!-- QUESTION BANK -->
     <section *ngIf="survey" id="bank">
-      <mat-card id="text" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'text', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+      <mat-card id="text" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'text', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Text'}}">
         <mat-icon>short_text</mat-icon>
       </mat-card>
-      <mat-card id="longText" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'textarea', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+      <mat-card id="longText" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'textarea', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Long Text'}}">
         <mat-icon>subject</mat-icon>
       </mat-card>
-      <mat-card id="email" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your email: ', type: 'email', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+      <mat-card id="email" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your email: ', type: 'email', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Email'}}">
         <mat-icon>mail_outline</mat-icon>
       </mat-card>
-      <mat-card id="address" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your address: ', type: 'address', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+      <mat-card id="address" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your address: ', type: 'address', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Address'}}">
         <mat-icon>place</mat-icon>
       </mat-card>
-      <mat-card id="phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your phone number: ', type: 'phone', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', borderRadius: '', border: '', placeholder: ''}}">
+      <mat-card id="phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your phone number: ', type: 'phone', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Phone'}}">
         <mat-icon>phone</mat-icon>
       </mat-card>
-      <mat-card id="dropdown" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option']}}">
+      <mat-card id="dropdown" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option']}}">
         <mat-icon>toc</mat-icon>
       </mat-card>
-      <mat-card id="radio" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option']}}">
+      <mat-card id="radio" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option']}}">
         <mat-icon>radio_button_checked</mat-icon>
       </mat-card>
-      <mat-card id="checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option']}}">
+      <mat-card id="checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option']}}">
           <mat-icon>check_box</mat-icon>
       </mat-card>
-      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: '', responseRequired: '', padding: '', color: '', align: '', questionOptions: ['New Option'], ratings: ['New Rating']}}">
+      <mat-card id="grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option'], ratings: ['New Rating']}}">
         <mat-icon>view_module</mat-icon>
       </mat-card>
     </section>
