@@ -125,6 +125,58 @@
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
           </div>
+
+          <!-- If question type is heading -->
+          <div class="surveyQuestion" *ngSwitchCase="'heading'">
+            <div class="questionSide">
+              <h1>{{question.label}}</h1>
+            </div>
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
+              <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+              <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+
+          <!-- If question type is paragraph -->
+          <div class="surveyQuestion" *ngSwitchCase="'paragraph'">
+            <div class="questionSide">
+              <p>{{question.label}}</p>
+            </div>
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
+              <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+              <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+
+          <!-- If question type is image -->
+          <div class="surveyQuestion" *ngSwitchCase="'image'">
+            <div class="questionSide">
+                <img [src]="question.src" width="80%">
+            </div>
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
+              <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+              <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+
+          <!-- If question type is divider -->
+          <div class="surveyQuestion" *ngSwitchCase="'divider'">
+            <div class="questionSide divider"></div>
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
+              <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+              <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+
+          <!-- If question type is spacer -->
+          <div class="surveyQuestion" *ngSwitchCase="'spacer'">
+            <div class="questionSide spacer"></div>
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
+              <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+              <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+
         </div>
       </div>
       <button id="exportButton" mat-raised-button (click)="exportHTML()">EXPORT HTML</button>
@@ -164,7 +216,23 @@
         </section>
       </mat-tab>
       <mat-tab label="Elements">
-        <p>Example Element</p>
+        <section id="elementBank">
+          <mat-card id="header" title="Heading" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Heading', type: 'heading'}">
+            <mat-icon>title</mat-icon>
+          </mat-card>
+          <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph'}">
+            <mat-icon>text_fields</mat-icon>
+          </mat-card>
+          <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image'}">
+            <mat-icon>image</mat-icon>
+          </mat-card>
+          <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider'}">
+            <mat-icon>remove</mat-icon>
+          </mat-card>
+          <mat-card id="spacer" title="Spacer" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'spacer'}">
+            <mat-icon>crop_16_9</mat-icon>
+          </mat-card>
+        </section>
       </mat-tab>
     </mat-tab-group>
   </div>

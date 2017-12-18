@@ -23,6 +23,19 @@
   height: 25px;
 }
 
+#elementBank {
+  width: 150px;
+  display: grid;
+  padding: 20px 0px 10px 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  max-height: 400px;
+}
+
+#elementBank mat-card {
+  height: 25px;
+}
+
 mat-tab-group {
   margin-left: auto;
   margin-right: 10px;
@@ -52,7 +65,7 @@ mat-tab-group {
 
 .iconBlock {
   position: absolute;
-  left: 55%;
+  left: 45%;
 }
 
 .surveyQuestion label {
@@ -129,4 +142,9 @@ mat-button-toggle-group {
 #saveQuestionSettingsButton {
   background-color: dodgerblue;
   color: #ffffff;
+}
+
+.divider {
+  width: 80%;
+  border-bottom: 1px solid #000000;
 }
