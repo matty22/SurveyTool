@@ -47,11 +47,11 @@ hover - background color
 File Upload
 
 ## Non-input elements I need to add
-Header
-Body text
-Images
-Horizontal Row Divider
-Spacer
+Header {toggle h1, h3, h6, color, align}
+Body text {size, color, align}
+Images {width, align}
+Horizontal Row Divider {width, height, color}
+Spacer {height}
 
 ## Known deficiencies
 The hacky way I am adding question options and ratings to radio, checkbox, and grid type questions
