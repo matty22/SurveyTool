@@ -70,4 +70,9 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   saveQuestionSettings() {
     this.surveylistService.saveQuestionSettings(this.survey, this.questionIndex, this.questionToEdit);
   }
+
+  // This exports the HTML and necessary CSS for the survey to display as expected
+  exportHTML() {
+    console.log(this.survey);
+  }
 }

@@ -103,6 +103,11 @@ mat-button-toggle-group {
   color: #ffffff;
 }
 
+#exportButton {
+  background-color: dodgerblue;
+  color: #ffffff;
+}
+
 #questionOptionList {
   display: flex;
   align-items: center;
