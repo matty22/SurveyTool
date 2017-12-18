@@ -8,17 +8,24 @@
   overflow: hidden;
 }
 
-#bank {
+#questionBank {
   width: 150px;
   display: grid;
   padding-top: 20px;
-  grid-template-columns: 1fr 1fr;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
   max-height: 400px;
 }
 
-#bank mat-card {
-  height: 30px;
+#questionBank mat-card {
+  height: 25px;
+}
+
+mat-tab-group {
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 #dropzone {

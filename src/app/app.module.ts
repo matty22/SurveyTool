@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule, MatButtonModule, MatDialogModule, 
          MatCardModule, MatListModule, MatInputModule, MatSidenavModule,
-         MatSelectModule, MatButtonToggleModule, MatSlideToggleModule} from '@angular/material';
+         MatSelectModule, MatButtonToggleModule, MatSlideToggleModule,
+        MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
@@ -42,6 +43,7 @@ import { AdjustSurveySettingsModalComponent } from './adjust-survey-settings-mod
     MatSelectModule,
     MatButtonToggleModule,
     MatSlideToggleModule,
+    MatTabsModule,
     DndModule.forRoot()
   ],
   providers: [
