@@ -61,6 +61,7 @@ mat-tab-group {
 
 .questionSide {
   margin-right: 50px;
+  display: flex;
 }
 
 .iconBlock {

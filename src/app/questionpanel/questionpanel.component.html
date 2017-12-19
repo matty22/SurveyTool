@@ -152,8 +152,8 @@
 
           <!-- If question type is image -->
           <div class="surveyQuestion" *ngSwitchCase="'image'">
-            <div class="questionSide">
-                <img [src]="question.src" width="80%">
+            <div class="questionSide" [ngStyle]="{'justify-content': question.align}">
+                <img [src]="question.src" [ngStyle]="{'width': question.width}">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -225,7 +225,7 @@
           <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph', size: '14px', color: '#262626', align: 'flex-start'}">
             <mat-icon>text_fields</mat-icon>
           </mat-card>
-          <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image'}">
+          <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image', width: '80%', align: 'flex-start'}">
             <mat-icon>image</mat-icon>
           </mat-card>
           <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider'}">
@@ -548,6 +548,22 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.color" placeholder="Text Color">
+        </mat-form-field>
+        <p>Alignment</p>
+        <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
+          <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <!-- IMAGE ELEMENT -->
+      <div class="questionSettingsSideNavForm" *ngSwitchCase="'image'">
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.src" placeholder="URL to image">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.width" placeholder="Width in percentage">
         </mat-form-field>
         <p>Alignment</p>
         <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
