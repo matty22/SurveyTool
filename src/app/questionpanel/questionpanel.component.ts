@@ -34,10 +34,10 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    
   }
 
   ngOnChanges() {
-    
   }
 
   // Adjust style settings for individual question
