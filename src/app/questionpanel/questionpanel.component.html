@@ -163,7 +163,7 @@
 
           <!-- If question type is divider -->
           <div class="surveyQuestion" *ngSwitchCase="'divider'">
-            <div class="questionSide divider"></div>
+            <div class="questionSide divider" [ngStyle]="{'width': question.width, 'border-width': question.borderWidth, 'border-color': question.color}"></div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
               <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
@@ -228,7 +228,7 @@
           <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image', width: '80%', align: 'flex-start'}">
             <mat-icon>image</mat-icon>
           </mat-card>
-          <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider'}">
+          <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider', width: '100%', borderWidth: '3px', color: '#262626'}">
             <mat-icon>remove</mat-icon>
           </mat-card>
           <mat-card id="spacer" title="Spacer" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'spacer'}">
@@ -571,6 +571,19 @@
           <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
           <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
         </mat-button-toggle-group>
+      </div>
+
+      <!-- DIVIDER ELEMENT -->
+      <div class="questionSettingsSideNavForm" *ngSwitchCase="'divider'">
+          <mat-form-field>
+            <input matInput [(ngModel)]="questionToEdit.width" placeholder="Divider Width">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="questionToEdit.borderWidth" placeholder="Border Thickness">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="questionToEdit.color" placeholder="Border Color">
+          </mat-form-field>
       </div>
 
     <button id="saveQuestionSettingsButton" mat-raised-button (click)="saveQuestionSettings()">SAVE SETTINGS</button>
