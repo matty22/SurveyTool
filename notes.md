@@ -1,39 +1,3 @@
-## Survey Settings
-Name
-Width
-Background color
-font-size
-font-family
-Email results to
-padding
-border
-border radius
-
-## Question Settings
-Question Text
-Question Text hidden?
-Response Required?
-padding
-color
-align
-
-## Single Text, TextArea, Profile fields
-Border radius
-border
-placeholder text
-
-<!-- I may remove profile field type questions from the app entirely -->
-<!-- ## Profile fields question
-Which profile fields to include?
-If email address is unknown, add as subscriber? -->
-
-## Radio/Checkbox/Select List questions
-Ability to add the selectable options
-<!-- For checkbox question, is the option prechecked? -->
-
-## Grid questions
-What are the things I am rating?
-What are the rating options across the top
 
 ## Submit buttons
 Background color

@@ -140,9 +140,9 @@
           </div>
 
           <!-- If question type is paragraph -->
-          <div class="surveyQuestion" *ngSwitchCase="'paragraph'">
+          <div class="surveyQuestion" *ngSwitchCase="'paragraph'" [ngStyle]="{'justify-content': question.align}">
             <div class="questionSide">
-              <p>{{question.label}}</p>
+              <p [ngStyle]="{'font-size': question.size, 'color': question.color}">{{question.label}}</p>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -222,7 +222,7 @@
           <mat-card id="header" title="Heading" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Heading', type: 'heading', size: 'h1', color: '#262626', align: 'flex-start'}">
             <mat-icon>title</mat-icon>
           </mat-card>
-          <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph'}">
+          <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph', size: '14px', color: '#262626', align: 'flex-start'}">
             <mat-icon>text_fields</mat-icon>
           </mat-card>
           <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image'}">
@@ -242,7 +242,7 @@
   <!--  QUESTION SETTINGS SIDENAV -->
   <mat-sidenav position="end" #sidenav (close)="tempQuestionOptions = [' ']" (close)="tempRatings = [' ']" [ngSwitch]="editQuestionType">
     
-    <!-- TEXT QUESTION --> 
+    <!-- TEXT CONTROL --> 
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'text'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -275,7 +275,7 @@
       </mat-button-toggle-group>
     </div>
 
-    <!-- TEXT AREA -->
+    <!-- TEXT AREA CONTROL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'textarea'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -308,7 +308,7 @@
       </mat-button-toggle-group>
     </div>
     
-    <!-- EMAIL -->
+    <!-- EMAIL CONTROL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'email'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -341,7 +341,7 @@
       </mat-button-toggle-group>
     </div>
     
-    <!-- ADDRESS -->
+    <!-- ADDRESS CONTROL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'address'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -374,7 +374,7 @@
       </mat-button-toggle-group>
     </div>
     
-    <!-- PHONE -->
+    <!-- PHONE CONTROL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'phone'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -407,7 +407,7 @@
       </mat-button-toggle-group>
     </div>
     
-    <!-- SELECT -->
+    <!-- SELECT CONTROL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'select'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -433,7 +433,7 @@
       </div>
     </div>
     
-    <!-- RADIO -->
+    <!-- RADIO CONTROL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'radio'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -459,7 +459,7 @@
       </div>
     </div>
     
-    <!-- CHECKBOX -->
+    <!-- CHECKBOX CONTROL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'checkbox'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -485,7 +485,7 @@
       </div>
     </div>
     
-    <!-- GRID -->
+    <!-- GRID CONTROL -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'grid'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Question Text">
@@ -516,7 +516,7 @@
       </div>
     </div>
 
-    <!-- HEADING -->
+    <!-- HEADING ELEMENT -->
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'heading'">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Heading">
@@ -537,6 +537,25 @@
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
+
+    <!-- TEXT ELEMENT -->
+      <div class="questionSettingsSideNavForm" *ngSwitchCase="'paragraph'">
+        <mat-form-field>
+          <textarea matInput [(ngModel)]="questionToEdit.label" placeholder="Lorem ipsum dolor sit amet"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.size" placeholder="14px">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.color" placeholder="Text Color">
+        </mat-form-field>
+        <p>Alignment</p>
+        <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
+          <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
 
     <button id="saveQuestionSettingsButton" mat-raised-button (click)="saveQuestionSettings()">SAVE SETTINGS</button>
   </mat-sidenav> 
