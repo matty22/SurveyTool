@@ -115,7 +115,7 @@ mat-sidenav-container {
 }
 
 mat-button-toggle-group {
-  width: 50%;
+  max-width: 50%;
 }
 
 .mat-button-toggle-checked {
@@ -139,9 +139,23 @@ mat-button-toggle-group {
   color: #ffffff;
 }
 
+#smallT {
+  font-size: 11px;
+}
+
+#mediumT {
+  font-size: 16px;
+}
+
+#largeT {
+  font-size: 24px;
+}
+
+
 #saveQuestionSettingsButton {
   background-color: dodgerblue;
   color: #ffffff;
+  margin-top: 20px;
 }
 
 .divider {

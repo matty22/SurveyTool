@@ -47,7 +47,6 @@ hover - background color
 File Upload
 
 ## Non-input elements I need to add
-Header {toggle h1, h3, h6, color, align}
 Body text {size, color, align}
 Images {width, align}
 Horizontal Row Divider {width, height, color}

@@ -127,9 +127,11 @@
           </div>
 
           <!-- If question type is heading -->
-          <div class="surveyQuestion" *ngSwitchCase="'heading'">
-            <div class="questionSide">
-              <h1>{{question.label}}</h1>
+          <div class="surveyQuestion" *ngSwitchCase="'heading'" [ngStyle]="{'justify-content': question.align}">
+            <div class="questionSide" [ngSwitch]="question.size">
+              <h5 *ngSwitchCase="'h5'" [ngStyle]="{'color': question.color}">{{question.label}}</h5>
+              <h3 *ngSwitchCase="'h3'" [ngStyle]="{'color': question.color}">{{question.label}}</h3>
+              <h1 *ngSwitchCase="'h1'" [ngStyle]="{'color': question.color}">{{question.label}}</h1>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -217,7 +219,7 @@
       </mat-tab>
       <mat-tab label="Elements">
         <section id="elementBank">
-          <mat-card id="header" title="Heading" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Heading', type: 'heading'}">
+          <mat-card id="header" title="Heading" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Heading', type: 'heading', size: 'h1', color: '#262626', align: 'flex-start'}">
             <mat-icon>title</mat-icon>
           </mat-card>
           <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph'}">
@@ -519,6 +521,21 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.label" placeholder="Heading">
       </mat-form-field>
+      <p>Size</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.size">
+        <mat-button-toggle value="h5" id="smallT">T</mat-button-toggle>
+        <mat-button-toggle value="h3" id="mediumT">T</mat-button-toggle>
+        <mat-button-toggle value="h1" id="largeT">T</mat-button-toggle>
+      </mat-button-toggle-group>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.color" placeholder="Text Color">
+      </mat-form-field>
+      <p>Alignment</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
+        <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+      </mat-button-toggle-group>
     </div>
 
     <button id="saveQuestionSettingsButton" mat-raised-button (click)="saveQuestionSettings()">SAVE SETTINGS</button>
