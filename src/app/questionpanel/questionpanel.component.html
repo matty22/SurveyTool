@@ -179,6 +179,17 @@
             </div>
           </div>
 
+          <!-- If element type is button -->
+          <div class="surveyQuestion" *ngSwitchCase="'button'"[ngStyle]="{'justify-content': question.align}">
+            <div class="questionSide">
+              <input type="button" class="draggedButton" [value]="question.label" [ngStyle]="{'background-color': question.backgroundColor, 'color': question.color, 'border': question.border, 'border-radius': question.borderRadius, 'margin': question.margin, 'width': question.width, 'height': question.height}">
+            </div>
+            <div *ngIf="i == hoveredIndex" class="iconBlock">
+              <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
+              <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
+            </div>
+          </div>
+
         </div>
       </div>
       <button id="exportButton" mat-raised-button (click)="exportHTML()">EXPORT HTML</button>
@@ -233,6 +244,9 @@
           </mat-card>
           <mat-card id="spacer" title="Spacer" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'spacer', height: '10px'}">
             <mat-icon>crop_16_9</mat-icon>
+          </mat-card>
+          <mat-card id="button" title="Submit Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Button', type: 'button', backgroundColor: '#9f9f9f', color: '#262626', margin: '0px 0px 0px 0px', width: '100px', height: '25px', align: 'flex-start', hoverBackground: '#dddddd', border: '1px solid #000000', borderRadius: '0px'}">
+            <mat-icon>touch_app</mat-icon>
           </mat-card>
         </section>
       </mat-tab>
@@ -591,6 +605,43 @@
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.height" placeholder="Height">
         </mat-form-field>
+      </div>
+
+      <!-- BUTTON ELEMENT -->
+      <div class="questionSettingsSideNavForm" *ngSwitchCase="'button'">
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.label" placeholder="Button Text">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.backgroundColor" placeholder="Background Color">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.color" placeholder="Text Color">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.margin" placeholder="Margin">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.width" placeholder="Button Width">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.height" placeholder="Button Height">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.border" placeholder="Border">
+        </mat-form-field>
+        <p>Alignment</p>
+        <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
+          <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        </mat-button-toggle-group>
+        <p>Border Radius:</p>
+        <mat-button-toggle-group [(ngModel)]="questionToEdit.borderRadius">
+          <mat-button-toggle value="0px"><mat-icon>border_style</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="5px"><mat-icon>rounded_corner</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="10px"><mat-icon>radio_button_unchecked</mat-icon></mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
 
     <button id="saveQuestionSettingsButton" mat-raised-button (click)="saveQuestionSettings()">SAVE SETTINGS</button>

@@ -10,10 +10,6 @@ hover - background color
 ## Types of Questions I want to add in addition to what TM already has
 File Upload
 
-## Non-input elements I need to add
-Horizontal Row Divider {width, height, color}
-Spacer {height}
-
 ## Known deficiencies
 The hacky way I am adding question options and ratings to radio, checkbox, and grid type questions
 CSS everywhere
