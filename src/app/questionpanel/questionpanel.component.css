@@ -154,7 +154,6 @@ mat-icon {
 
 mat-sidenav {
   color: #ffffff;
-  padding: 20px 10px;
   background-color: #3F4752;
   width: 350px;
 }
@@ -166,6 +165,7 @@ mat-sidenav-container {
 .questionSettingsSideNavForm {
   display: flex;
   flex-direction: column;
+  padding: 20px 10px 30px 10px;
 }
 
 mat-button-toggle-group {
@@ -178,6 +178,7 @@ mat-button-toggle-group {
 }
 
 #exportButton {
+  margin: 20px 0px;
   background-color: dodgerblue;
   color: #ffffff;
 }
