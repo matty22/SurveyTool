@@ -66,6 +66,14 @@ mat-tab-group {
   align-items: flex-start;
 }
 
+.heading {
+  max-height: 40px;
+}
+
+h1, h3, h5 {
+  margin: 0;
+}
+
 .checkboxLabel {
   margin-top: 3px;
 }

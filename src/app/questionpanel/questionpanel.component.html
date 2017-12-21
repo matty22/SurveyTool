@@ -153,7 +153,7 @@
           </div>
 
           <!-- If question type is heading -->
-          <div class="surveyQuestion" *ngSwitchCase="'heading'" [ngStyle]="{'justify-content': question.align}">
+          <div class="surveyQuestion heading" *ngSwitchCase="'heading'" [ngStyle]="{'justify-content': question.align, 'padding': question.padding}">
             <div class="questionSide" [ngSwitch]="question.size">
               <h5 *ngSwitchCase="'h5'" [ngStyle]="{'color': question.color}">{{question.label}}</h5>
               <h3 *ngSwitchCase="'h3'" [ngStyle]="{'color': question.color}">{{question.label}}</h3>
@@ -256,7 +256,7 @@
       </mat-tab>
       <mat-tab label="Elements">
         <section id="elementBank">
-          <mat-card id="header" title="Heading" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Heading', type: 'heading', size: 'h1', color: '#262626', align: 'flex-start'}">
+          <mat-card id="header" title="Heading" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Heading', type: 'heading', size: 'h1', color: '#262626', align: 'flex-start', padding: '0px 0px 0px 0px'}">
             <mat-icon>title</mat-icon>
           </mat-card>
           <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph', size: '14px', color: '#262626', align: 'flex-start'}">
@@ -569,6 +569,9 @@
       </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.color" placeholder="Text Color">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
