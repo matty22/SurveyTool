@@ -91,6 +91,20 @@ mat-tab-group {
   margin-bottom: 8px;
 }
 
+.gridTable {
+  border: 1px solid #000000;
+}
+
+.gridTable td {
+  border: 1px solid #000000;
+  border-collapse: collapse;
+  padding: 10px 10px;
+}
+
+.gridTableRow td {
+  text-align: center;
+}
+
 .iconBlock {
   position: absolute;
   left: 45%;
@@ -186,10 +200,10 @@ mat-button-toggle-group {
   margin-top: 20px;
 }
 
-.divider {
+/* .divider {
   width: 80%;
   border-bottom: 1px solid #000000;
-}
+} */
 
 .draggedButton {
   padding: 5px 0px;
