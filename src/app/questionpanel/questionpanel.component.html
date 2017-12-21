@@ -33,8 +33,13 @@
           <!-- If question type is checkbox -->
           <div class="surveyQuestion" *ngSwitchCase="'checkbox'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
-                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input type="checkbox" disabled>
+                <p class="checkboxLabel" *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{question.label}}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></p>
+                <div class="checkboxOuter">
+                  <div class="checkboxInner" *ngFor="let option of question.options.questionOptions">
+                    <input type="checkbox" name="{{option}}" value="{{option}}">  
+                    <label for="{{option}}">{{ option }}</label>
+                  </div>
+                </div>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -46,7 +51,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'select'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <select disabled><option>Default</option></select>
+                <select><option *ngFor="let option of question.options.questionOptions">{{option}}</option></select>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -650,6 +655,6 @@
         </mat-button-toggle-group>
       </div>
 
-    <button id="saveQuestionSettingsButton" mat-raised-button (click)="saveQuestionSettings()">SAVE SETTINGS</button>
+    <!-- <button *ngIf="questionToEdit.options.questionOptions" id="saveQuestionSettingsButton" mat-raised-button (click)="saveQuestionSettings()">SAVE QUESTION OPTIONS</button> -->
   </mat-sidenav> 
 </mat-sidenav-container> 

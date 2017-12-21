@@ -67,9 +67,9 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   }
 
   // Temporary method for testing data binding
-  saveQuestionSettings() {
-    this.surveylistService.saveQuestionSettings(this.survey, this.questionIndex, this.questionToEdit);
-  }
+  // saveQuestionSettings() {
+  //   this.surveylistService.saveQuestionSettings(this.survey, this.questionIndex, this.questionToEdit);
+  // }
 
   // This exports the HTML and necessary CSS for the survey to display as expected
   exportHTML() {

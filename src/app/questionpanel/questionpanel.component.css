@@ -63,6 +63,22 @@ mat-tab-group {
 .questionSide {
   margin-right: 50px;
   display: flex;
+  align-items: flex-start;
+}
+
+.checkboxLabel {
+  margin-top: 3px;
+}
+
+.checkboxOuter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.checkboxInner {
+  display: flex;
+  align-items: center;
 }
 
 .iconBlock {
