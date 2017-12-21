@@ -126,8 +126,14 @@
           <!-- If question type is address -->
           <div class="surveyQuestion" *ngSwitchCase="'address'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
-                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
+              <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
+              <div class="addressBlock">
+                <input placeholder="Street Address" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
+                <input placeholder="Street Address 2" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
+                <input placeholder="City" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
+                <input placeholder="State" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
+                <input placeholder="Postal/Zip" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
+              </div>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -214,13 +220,13 @@
           <mat-card id="longText" title="Long Text Field" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'textarea', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Long Text'}}">
             <mat-icon>subject</mat-icon>
           </mat-card>
-          <mat-card id="email" title="Email" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your email: ', type: 'email', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Email'}}">
+          <mat-card id="email" title="Email" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Email: ', type: 'email', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Email'}}">
             <mat-icon>mail_outline</mat-icon>
           </mat-card>
-          <mat-card id="address" title="Address" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your address: ', type: 'address', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Address'}}">
+          <mat-card id="address" title="Address" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Address: ', type: 'address', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a'}}">
             <mat-icon>place</mat-icon>
           </mat-card>
-          <mat-card id="phone" title="Phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your phone number: ', type: 'phone', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Phone'}}">
+          <mat-card id="phone" title="Phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Phone: ', type: 'phone', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Phone'}}">
             <mat-icon>phone</mat-icon>
           </mat-card>
           <mat-card id="dropdown" title="Dropdown List" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option']}}">
