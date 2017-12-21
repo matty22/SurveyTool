@@ -21,8 +21,12 @@
           <!-- If question type is radio -->
           <div class="surveyQuestion" *ngSwitchCase="'radio'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
-                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input type="radio" disabled>
+                <p class="checkboxLabel" *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></p>
+                <div class="checkboxOuter">
+                  <div class="checkboxInner" *ngFor="let button of question.options.questionOptions">
+                    <input type="radio" name="{{button}}" value="{{button}}">{{button}}
+                  </div>
+                </div>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>  
