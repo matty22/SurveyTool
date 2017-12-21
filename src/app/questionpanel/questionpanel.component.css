@@ -94,6 +94,11 @@ h1, h3, h5 {
   margin-bottom: 8px;
 }
 
+.gridQuestion {
+  display: flex;
+  flex-direction: column;
+}
+
 .gridTable {
   border: 1px solid #000000;
 }
@@ -102,6 +107,10 @@ h1, h3, h5 {
   border: 1px solid #000000;
   border-collapse: collapse;
   padding: 10px 10px;
+}
+
+.gridTableHeaderRow {
+  background-color: #5a5a5a;
 }
 
 .gridTableRow td {

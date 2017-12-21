@@ -89,20 +89,21 @@
           
           <!-- If question type is grid -->
           <div class="surveyQuestion" *ngSwitchCase="'grid'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
-                <table class="gridTable" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td class="gridTableHeaderRow">&nbsp;</td>
-                    <td  class="gridTableHeaderRow" *ngFor="let header of question.options.ratings">{{header}}</td>
-                  </tr>
-                  <tr class="gridTableRow" *ngFor="let option of question.options.questionOptions">
-                    <td>{{option}}</td>
-                    <td *ngFor="let rating of question.options.ratings">
-                      <input type="radio">
-                    </td>
-                  </tr>
-                </table>
-                <!-- <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label> -->
+            <div class="questionSide gridQuestion" [ngStyle]="{'padding': question.options.padding}">
+              <p *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></p>
+              <table class="gridTable" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="gridTableHeaderRow" [ngStyle]="{'background-color':question.options.headerBackground}">&nbsp;</td>
+                  <td  class="gridTableHeaderRow" [ngStyle]="{'background-color':question.options.headerBackground, 'color': question.options.headerColor}" *ngFor="let header of question.options.ratings">{{header}}</td>
+                </tr>
+                <tr class="gridTableRow" *ngFor="let option of question.options.questionOptions">
+                  <td [ngStyle]="{'background-color': question.options.leftColumnBackground, 'color': question.options.leftColumnColor}">{{option}}</td>
+                  <td *ngFor="let rating of question.options.ratings">
+                    <input *ngIf="question.options.gridType == 'radio'" type="radio">
+                    <input *ngIf="question.options.gridType == 'checkbox'" type="checkbox">
+                  </td>
+                </tr>
+              </table>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -249,7 +250,7 @@
           <mat-card id="checkbox" title="Checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option']}}">
               <mat-icon>check_box</mat-icon>
           </mat-card>
-          <mat-card id="grid" title="Grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option'], ratings: ['New Rating']}}">
+          <mat-card id="grid" title="Grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', gridType: 'radio', headerBackground: '#7f7f7f', headerColor: '#262626', leftColumnBackground: '#ffffff', leftColumnColor: '#262626', questionOptions: ['New Option'], ratings: ['New Rating']}}">
             <mat-icon>view_module</mat-icon>
           </mat-card>
         </section>
@@ -532,11 +533,28 @@
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <p>Grid Type</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.gridType">
+        <mat-button-toggle value="radio"><mat-icon>radio_button_checked</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="checkbox"><mat-icon>check_box</mat-icon></mat-button-toggle>
+      </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.headerBackground" placeholder="Header Background Color">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.headerColor" placeholder="Header Text Color">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.leftColumnBackground" placeholder="Left Column Background Color">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.leftColumnColor" placeholder="Left Column Text Color">
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
