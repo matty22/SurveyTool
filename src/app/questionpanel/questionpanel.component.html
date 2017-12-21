@@ -10,7 +10,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'text'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text" disabled>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -67,7 +67,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'textarea'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <textarea [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" cols="20" rows="3" disabled></textarea>
+                <textarea [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" cols="20" rows="3"></textarea>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -79,7 +79,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'profile'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text" disabled>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -91,7 +91,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'grid'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input type="radio" disabled>
+                <input type="radio">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -103,7 +103,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'phone'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text" disabled>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -115,7 +115,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'email'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="email" disabled>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="email">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -127,7 +127,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'address'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text" disabled>
+                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
