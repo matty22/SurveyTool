@@ -8,18 +8,27 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class CodeExportComponent implements OnInit {
 
-  @Input() survey: any;
+  // @Input() survey: any;
 
+  exportedSurvey: object;
   constructor(public dialogRef: MatDialogRef<CodeExportComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-    let exportedSurvey = this.data;
-    console.log(exportedSurvey)
+    this.exportedSurvey = this.data;
   }
 
   closeDialog() {
     this.dialogRef.close(); 
+  }
+
+  translateHTML() {
+    let styles: string;
+    styles = "<style>form{background-color:" + this.data.settings.background +"; border:" + this.data.settings.border + 
+             "; border-radius:" + this.data.settings.borderRadius  + "; font-family:" + this.data.settings.font + 
+             "; font-size:" + this.data.settings.fontSize + "; padding:" + this.data.settings.padding + 
+             "; width:" + this.data.settings.width + "px;}</style>"
+    console.log(styles);
   }
 
 }
