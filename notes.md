@@ -3,6 +3,8 @@
 File Upload
 
 ## Known deficiencies or possible improvements
+Can only drag in or sort. Need to be able to do both
+Add Firebase back end?
 The hacky way I am adding question options and ratings to radio, checkbox, and grid type questions
 CSS everywhere
 Needs some serious refactoring

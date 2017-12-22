@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { SurveylistService } from '../surveylist.service';
+import { CodeExportComponent } from '../code-export/code-export.component';
 
 @Component({
   selector: 'app-questionpanel',
@@ -29,7 +31,8 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
       ratings: []
     }
   };
-  constructor(private surveylistService: SurveylistService) {
+  constructor(private surveylistService: SurveylistService,
+              public dialog: MatDialog) {
 
   }
 
@@ -66,13 +69,8 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
     this.tempRatings.push(" ");
   }
 
-  // Temporary method for testing data binding
-  // saveQuestionSettings() {
-  //   this.surveylistService.saveQuestionSettings(this.survey, this.questionIndex, this.questionToEdit);
-  // }
-
   // This exports the HTML and necessary CSS for the survey to display as expected
   exportHTML() {
-    console.log(this.survey);
+    let dialogRef = this.dialog.open(CodeExportComponent, {data: this.survey, width: '300px', height: '220px'});
   }
 }

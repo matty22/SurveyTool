@@ -20,6 +20,7 @@ import { AddsurveymodalComponent } from './addsurveymodal/addsurveymodal.compone
 // Services
 import { SurveylistService } from './surveylist.service';
 import { AdjustSurveySettingsModalComponent } from './adjust-survey-settings-modal/adjust-survey-settings-modal.component';
+import { CodeExportComponent } from './code-export/code-export.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AdjustSurveySettingsModalComponent } from './adjust-survey-settings-mod
     QuestionpanelComponent,
     SurveylistComponent,
     AddsurveymodalComponent,
-    AdjustSurveySettingsModalComponent
+    AdjustSurveySettingsModalComponent,
+    CodeExportComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { AdjustSurveySettingsModalComponent } from './adjust-survey-settings-mod
   bootstrap: [AppComponent],
   entryComponents: [
     AddsurveymodalComponent,
-    AdjustSurveySettingsModalComponent
+    AdjustSurveySettingsModalComponent,
+    CodeExportComponent
   ]
 })
 export class AppModule { }

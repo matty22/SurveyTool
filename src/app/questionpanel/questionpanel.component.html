@@ -207,9 +207,9 @@
           </div>
 
           <!-- If element type is button -->
-          <div class="surveyQuestion" *ngSwitchCase="'button'"[ngStyle]="{'justify-content': question.align}">
+          <div class="surveyQuestion" *ngSwitchCase="'submit'"[ngStyle]="{'justify-content': question.align}">
             <div class="questionSide">
-              <input (mouseover)="hover = true" (mouseout)="hover = null" type="button" class="draggedButton" [value]="question.label" [ngStyle]="{'background-color': hover ? question.hoverBackground : question.backgroundColor, 'color': hover ? question.hoverColor : question.color, 'border': question.border, 'border-radius': question.borderRadius, 'margin': question.margin, 'width': question.width, 'height': question.height}">
+              <input (mouseover)="hover = true" (mouseout)="hover = null" type="submit" class="draggedButton" [value]="question.label" [ngStyle]="{'background-color': hover ? question.hoverBackground : question.backgroundColor, 'color': hover ? question.hoverColor : question.color, 'border': question.border, 'border-radius': question.borderRadius, 'margin': question.margin, 'width': question.width, 'height': question.height}">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -272,7 +272,7 @@
           <mat-card id="spacer" title="Spacer" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'spacer', height: '10px'}">
             <mat-icon>crop_16_9</mat-icon>
           </mat-card>
-          <mat-card id="button" title="Submit Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Button', type: 'button', backgroundColor: '#9f9f9f', color: '#262626', margin: '0px 0px 0px 0px', width: '100px', height: '25px', align: 'flex-start', hoverBackground: '#dddddd', hoverColor: '#ffffff', border: '1px solid #000000', borderRadius: '0px'}">
+          <mat-card id="button" title="Submit Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Button', type: 'submit', backgroundColor: '#9f9f9f', color: '#262626', margin: '0px 0px 0px 0px', width: '100px', height: '25px', align: 'flex-start', hoverBackground: '#dddddd', hoverColor: '#ffffff', border: '1px solid #000000', borderRadius: '0px'}">
             <mat-icon>touch_app</mat-icon>
           </mat-card>
         </section>
@@ -658,7 +658,7 @@
       </div>
 
       <!-- BUTTON ELEMENT -->
-      <div class="questionSettingsSideNavForm" *ngSwitchCase="'button'">
+      <div class="questionSettingsSideNavForm" *ngSwitchCase="'submit'">
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.label" placeholder="Button Text">
         </mat-form-field>
