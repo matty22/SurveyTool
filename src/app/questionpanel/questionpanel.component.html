@@ -209,7 +209,7 @@
           <!-- If element type is button -->
           <div class="surveyQuestion" *ngSwitchCase="'submit'"[ngStyle]="{'justify-content': question.align}">
             <div class="questionSide">
-              <input (mouseover)="hover = true" (mouseout)="hover = null" type="submit" class="draggedButton" [value]="question.label" [ngStyle]="{'background-color': hover ? question.hoverBackground : question.backgroundColor, 'color': hover ? question.hoverColor : question.color, 'border': question.border, 'border-radius': question.borderRadius, 'margin': question.margin, 'width': question.width, 'height': question.height}">
+              <input (mouseover)="hover = true" (mouseout)="hover = null" type="submit" [value]="question.label" [ngStyle]="{'background-color': hover ? question.hoverBackground : question.backgroundColor, 'color': hover ? question.hoverColor : question.color, 'border': question.border, 'border-radius': question.borderRadius, 'margin': question.margin, 'width': question.width, 'height': question.height}">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>

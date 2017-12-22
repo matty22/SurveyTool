@@ -1,4 +1,7 @@
 
+
+/* EDITOR SPECIFIC STYLES */
+
 .wrapper {
   display: flex;
   justify-content: space-around;
@@ -22,6 +25,7 @@
 #questionBank mat-card {
   height: 25px;
 }
+
 
 #elementBank {
   width: 150px;
@@ -51,6 +55,85 @@ mat-tab-group {
   flex-direction: column;
   cursor: auto !important;
 }
+
+.iconBlock {
+  position: absolute;
+  left: 45%;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.surveyQuestion mat-icon:hover {
+  background-color: #f7f7f7;
+  box-shadow: 0px 2px 5px inset #e6e6e6
+}
+
+mat-sidenav {
+  color: #ffffff;
+  background-color: #3F4752;
+  width: 350px;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+.questionSettingsSideNavForm {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px 30px 10px;
+}
+
+mat-button-toggle-group {
+  max-width: 50%;
+}
+
+.mat-button-toggle-checked {
+  background-color: dodgerblue;
+  color: #ffffff;
+}
+
+#exportButton {
+  margin: 20px 0px;
+  background-color: dodgerblue;
+  color: #ffffff;
+}
+
+#questionOptionList {
+  display: flex;
+  align-items: center;
+}
+
+#addInputButton {
+  border: none;
+  background: none;
+  color: #ffffff;
+}
+
+#saveQuestionSettingsButton {
+  background-color: dodgerblue;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+#smallT {
+  font-size: 11px;
+}
+
+#mediumT {
+  font-size: 16px;
+}
+
+#largeT {
+  font-size: 24px;
+}
+
+/* END EDITOR SPECIFIC STYLES */
+
+
+/* CSS THAT ACTUALLY AFFECTS THE RESULTING FORM */
 
 .surveyQuestion {
   display: flex;
@@ -109,17 +192,8 @@ h1, h3, h5 {
   padding: 10px 10px;
 }
 
-.gridTableHeaderRow {
-  background-color: #5a5a5a;
-}
-
 .gridTableRow td {
   text-align: center;
-}
-
-.iconBlock {
-  position: absolute;
-  left: 45%;
 }
 
 .surveyQuestion label {
@@ -143,81 +217,4 @@ h1, h3, h5 {
   color: #ff0000;
 }
 
-mat-icon {
-  cursor: pointer;
-}
-
-.surveyQuestion mat-icon:hover {
-  background-color: #f7f7f7;
-  box-shadow: 0px 2px 5px inset #e6e6e6
-}
-
-mat-sidenav {
-  color: #ffffff;
-  background-color: #3F4752;
-  width: 350px;
-}
-
-mat-sidenav-container {
-  height: 100%;
-}
-
-.questionSettingsSideNavForm {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 10px 30px 10px;
-}
-
-mat-button-toggle-group {
-  max-width: 50%;
-}
-
-.mat-button-toggle-checked {
-  background-color: dodgerblue;
-  color: #ffffff;
-}
-
-#exportButton {
-  margin: 20px 0px;
-  background-color: dodgerblue;
-  color: #ffffff;
-}
-
-#questionOptionList {
-  display: flex;
-  align-items: center;
-}
-
-#addInputButton {
-  border: none;
-  background: none;
-  color: #ffffff;
-}
-
-#smallT {
-  font-size: 11px;
-}
-
-#mediumT {
-  font-size: 16px;
-}
-
-#largeT {
-  font-size: 24px;
-}
-
-
-#saveQuestionSettingsButton {
-  background-color: dodgerblue;
-  color: #ffffff;
-  margin-top: 20px;
-}
-
-/* .divider {
-  width: 80%;
-  border-bottom: 1px solid #000000;
-} */
-
-.draggedButton {
-  padding: 5px 0px;
-}
+/* END CSS THAT AFFECTS FORM */
