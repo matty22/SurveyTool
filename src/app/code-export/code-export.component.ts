@@ -50,7 +50,6 @@ export class CodeExportComponent implements OnInit {
         case 'text':
           let hide = options.hideQuestion;
           let required = options.responseRequired;
-          console.log("text field: " + required);
           body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
@@ -67,59 +66,59 @@ export class CodeExportComponent implements OnInit {
         case 'textarea':
           hide = options.hideQuestion;
           required = options.responseRequired;
-          console.log("text area: " + required);
         break;
 
         case 'email':
-          // email field HTML
+          hide = options.hideQuestion;
+          required = options.responseRequired;
         break;
 
         case 'address':
-          //address field HTML
+          hide = options.hideQuestion;
+          required = options.responseRequired;
         break;
 
         case 'phone':
-          // phone field HTML
+          hide = options.hideQuestion;
+          required = options.responseRequired;
         break;
 
         case 'select':
-          // select list HTML
+          hide = options.hideQuestion;
+          required = options.responseRequired;
         break;
 
         case 'radio':
-          // radio button HTML
+          hide = options.hideQuestion;
+          required = options.responseRequired;
         break;
 
         case 'checkbox':
-          // checkbox HTML
+          hide = options.hideQuestion;
+          required = options.responseRequired;
         break;
 
         case 'grid':
-          // grid HTML
+          hide = options.hideQuestion;
+          required = options.responseRequired;
         break;
 
         case 'heading':
-          // heading HTML
         break;
 
         case 'paragraph':
-          // paragraph HTML
         break;
 
         case 'image':
-          // image HTML
         break;
 
         case 'divider':
-          // divider HTML
         break;
 
         case 'spacer':
-          // spacer HTML
         break;
 
         case 'submit':
-          // submit button HTML
         break;
       }
     }
