@@ -32,8 +32,8 @@ export class CodeExportComponent implements OnInit {
     let styles: string = "<style>form{background-color:" + this.data.settings.background +"; border:" + this.data.settings.border + 
              "; border-radius:" + this.data.settings.borderRadius  + "; font-family:" + this.data.settings.font + 
              "; font-size:" + this.data.settings.fontSize + "; padding:" + this.data.settings.padding + 
-             "; width:" + this.data.settings.width + "px;}.surveyQuestion{display:flex;align-items:center;justify-content" +
-             ":flex-start;min-height:30px;}.questionSide{margin-right:50px;display:flex;align-items:flex-start;}h1,h3,h5{margin:0;}" + 
+             "; width:" + this.data.settings.width + "px;}.surveyQuestion{display:flex;align-items:center;" +
+             "min-height:30px;}.questionSide{display:flex;align-items:flex-start;}h1,h3,h5{margin:0;}" + 
              ".checkboxLabel{margin-top:3px;}.checkboxOuter{display:flex;flex-direction:column;align-items:flex-start;}" + 
              ".checkboxInner{display:flex;align-items:center;}.addressBlock{display:flex;flex-direction:column;}" + 
              ".addressBlock input{padding:5px 0;margin-bottom:8px;}.gridQuestion{display:flex;flex-direction:column;}" + 
@@ -41,7 +41,7 @@ export class CodeExportComponent implements OnInit {
              ".gridTableRow td{text-align:center;}.surveyQuestion label{padding-right:5px;}" + 
              ".surveyQuestion input{background-color:transparent;height:20px;padding:0 5px;}" + 
              ".surveyQuestion textarea{font-family:Arial, sans-serif;font-size:0.8em;padding:5px;background-color:transparent;}" + 
-             ".requiredStar{color:#ff0000;}</style>";
+             ".requiredStar{color:#ff0000;}";
     let body: string = "<form action='#' method='post'>";
     for (let i = 0; i < this.data.questions.length; i++) {
       let options = this.data.questions[i].options;
@@ -57,40 +57,110 @@ export class CodeExportComponent implements OnInit {
           }
           // If required is true, concat the required star
           if (required) {
-            body += "<span class='requiredStar'>*</span>"
+            body += "<span class='requiredStar'>*</span>";
+            body += "<input type='text' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>"
+          } else {
+            body += "<input type='text' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>"
           }
-          body += "<input type='text' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'"
           body += "</div></div>";
         break;
 
         case 'textarea':
           hide = options.hideQuestion;
           required = options.responseRequired;
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          // If hideQuestion is false, concat the label tag
+          if (!hide) {
+            body += "<label style='color:" + options.color +";'>" + this.data.questions[i].label + "</label>";
+          }
+          // If required is true, concat the required star
+          if (required) {
+            body += "<span class='requiredStar'>*</span>";
+            body += "<textarea placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required></textarea>"
+          } else {
+            body += "<textarea placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'></textarea>"
+          }
+          body += "</div></div>";
         break;
 
         case 'email':
           hide = options.hideQuestion;
           required = options.responseRequired;
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          // If hideQuestion is false, concat the label tag
+          if (!hide) {
+            body += "<label style='color:" + options.color +";'>" + this.data.questions[i].label + "</label>";
+          }
+          // If required is true, concat the required star
+          if (required) {
+            body += "<span class='requiredStar'>*</span>";
+            body += "<input type='email' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>"
+          } else {
+            body += "<input type='email' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>"
+          }
+          body += "</div></div>";
         break;
 
         case 'address':
           hide = options.hideQuestion;
           required = options.responseRequired;
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          // If hideQuestion is false, concat the label tag
+          if (!hide) {
+            body += "<label style='color:" + options.color +";'>" + this.data.questions[i].label + "</label>";
+          }
+          // If required is true, concat the required star
+          if (required) {
+            body += "<span class='requiredStar'>*</span>";
+            body += "<div class='addressBlock'>" + 
+                    "<input placeholder='Street Address' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text' required>" +
+                    "<input placeholder='Street Address 2' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text' required>" +
+                    "<input placeholder='City' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text' required>" +
+                    "<input placeholder='State' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text' required>" +
+                    "<input placeholder='Postal/Zip' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text' required>" +
+                    "</div>";
+          } else {
+            body += "<div class='addressBlock'>" + 
+                    "<input placeholder='Street Address' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text'>" +
+                    "<input placeholder='Street Address 2' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text'>" +
+                    "<input placeholder='City' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text'>" +
+                    "<input placeholder='State' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text'>" +
+                    "<input placeholder='Postal/Zip' style='border-radius:" + options.borderRadius + "; border:" + options.border + ";' type='text'>" +
+                    "</div>";
+          }
+          body += "</div></div>";
         break;
 
         case 'phone':
           hide = options.hideQuestion;
           required = options.responseRequired;
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          // If hideQuestion is false, concat the label tag
+          if (!hide) {
+            body += "<label style='color:" + options.color +";'>" + this.data.questions[i].label + "</label>";
+          }
+
+          // If required is true, concat the required star
+          if (required) {
+            body += "<span class='requiredStar'>*</span>";
+            body += "<input type='tel' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>"
+          } else {
+            body += "<input type='tel' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>"
+          }
+          body += "</div></div>";
         break;
 
         case 'select':
           hide = options.hideQuestion;
           required = options.responseRequired;
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "</div></div>";
         break;
 
         case 'radio':
           hide = options.hideQuestion;
           required = options.responseRequired;
+          
         break;
 
         case 'checkbox':
@@ -122,7 +192,9 @@ export class CodeExportComponent implements OnInit {
         break;
       }
     }
+    styles += "</style>";
     body += "</form>";
+    console.log(styles);
     console.log(body);
   }
 
