@@ -58,9 +58,9 @@ export class CodeExportComponent implements OnInit {
           // If required is true, concat the required star
           if (required) {
             body += "<span class='requiredStar'>*</span>";
-            body += "<input type='text' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>"
+            body += "<input type='text' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>";
           } else {
-            body += "<input type='text' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>"
+            body += "<input type='text' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>";
           }
           body += "</div></div>";
         break;
@@ -76,9 +76,9 @@ export class CodeExportComponent implements OnInit {
           // If required is true, concat the required star
           if (required) {
             body += "<span class='requiredStar'>*</span>";
-            body += "<textarea placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required></textarea>"
+            body += "<textarea placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required></textarea>";
           } else {
-            body += "<textarea placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'></textarea>"
+            body += "<textarea placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'></textarea>";
           }
           body += "</div></div>";
         break;
@@ -94,9 +94,9 @@ export class CodeExportComponent implements OnInit {
           // If required is true, concat the required star
           if (required) {
             body += "<span class='requiredStar'>*</span>";
-            body += "<input type='email' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>"
+            body += "<input type='email' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>";
           } else {
-            body += "<input type='email' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>"
+            body += "<input type='email' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>";
           }
           body += "</div></div>";
         break;
@@ -143,9 +143,9 @@ export class CodeExportComponent implements OnInit {
           // If required is true, concat the required star
           if (required) {
             body += "<span class='requiredStar'>*</span>";
-            body += "<input type='tel' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>"
+            body += "<input type='tel' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";' required>";
           } else {
-            body += "<input type='tel' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>"
+            body += "<input type='tel' placeholder='" + options.placeholder + "' style='border:" + options.border + "; border-radius:" + options.borderRadius + ";'>";
           }
           body += "</div></div>";
         break;
@@ -154,6 +154,26 @@ export class CodeExportComponent implements OnInit {
           hide = options.hideQuestion;
           required = options.responseRequired;
           body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          // If hideQuestion is false, concat the label tag
+          if (!hide) {
+            body += "<label style='color:'" + options.color + ";'>" + this.data.questions[i].label + "</label>";
+          }
+          // If required is true, concat the required star
+          if (required) {
+            body += "<span class='requiredStar'>*</span>";
+            body += "<select required><option value='' selected>Choose Option</option>";
+            for (let i = 0; i < options.questionOptions.length; i++) {
+              body += "<option value='" + options.questionOptions[i] + "'>" + options.questionOptions[i] + "</option>";
+            }
+            body += "</select>";
+          } else {
+            body += "<select><option value='' selected>Choose Option</option>";
+            for (let i = 0; i < options.questionOptions.length; i++) {
+              body += "<option value='" + options.questionOptions[i] + "'>" + options.questionOptions[i] + "</option>";
+            }
+            body += "</select>";
+          }
+          
           body += "</div></div>";
         break;
 
