@@ -31,10 +31,10 @@ export class CodeExportComponent implements OnInit {
              "; border-radius:" + this.data.settings.borderRadius  + "; font-family:" + this.data.settings.font + 
              "; font-size:" + this.data.settings.fontSize + "; padding:" + this.data.settings.padding + 
              "; width:" + this.data.settings.width + "px;}.surveyQuestion{display:flex;align-items:center;" +
-             "min-height:30px;}.questionSide{display:flex;align-items:flex-start;}h1,h3,h5{margin:0;}" + 
+             "min-height:30px;}.questionSide{display:flex;align-items:center;}h1,h3,h5{margin:0;}" + 
              ".checkboxLabel{margin-top:3px;}.checkboxOuter{display:flex;flex-direction:column;align-items:flex-start;}" + 
              ".checkboxInner{display:flex;align-items:center;}.addressBlock{display:flex;flex-direction:column;}" + 
-             ".addressBlock input{padding:5px 0;margin-bottom:8px;}.gridQuestion{display:flex;flex-direction:column;}" + 
+             ".addressBlock input{padding:5px 0;margin-bottom:8px;}.gridQuestion{display:flex;flex-direction:column; align-items: flex-start}" + 
              ".gridTable{border:1px solid #000000;}.gridTable td{border:1px solid #000000;border-collapse:collapse;padding:10px;}" + 
              ".gridTableRow td{text-align:center;}.surveyQuestion label{padding-right:5px;}" + 
              ".surveyQuestion input{background-color:transparent;height:20px;padding:0 5px;}" + 
@@ -231,7 +231,7 @@ export class CodeExportComponent implements OnInit {
           hide = options.hideQuestion;
           required = options.responseRequired;
           let gridType = options.gridType;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide gridQuestion' style='padding:" + options.padding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color + ";'>" + this.data.questions[i].label + "</label>"; 
@@ -239,11 +239,11 @@ export class CodeExportComponent implements OnInit {
           // If required is true, concat the required star
           if (required) {
             body += "<span class='requiredStar'>*</span>";
-            body += "<table class='gridTable' cellspacing='0' cellpadding='0'><tr><td class='gridTableHeaderRow' style='" + options.headerBackground +";'>&nbsp;</td>";
+            body += "<table class='gridTable' cellspacing='0' cellpadding='0'><tr><td class='gridTableHeaderRow' style='background-color:" + options.headerBackground +";'>&nbsp;</td>";
             if (gridType === 'radio') {
               // Add all the columns to the grid header row for each rating
               for (let i = 0; i < options.ratings.length; i++) {
-                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i] + "</td>";
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" + options.ratings[i] + "</td>";
               }
               body += "</tr>";
               // Add all the rows/columns to the grid for each option
@@ -272,7 +272,7 @@ export class CodeExportComponent implements OnInit {
               }
             }
           } else {
-            body += "<table class='gridTable' cellspacing='0' cellpadding='0'><tr><td class='gridTableHeaderRow' style='" + options.headerBackground +";'>&nbsp;</td>";
+            body += "<table class='gridTable' cellspacing='0' cellpadding='0'><tr><td class='gridTableHeaderRow' style='background-color:" + options.headerBackground +";'>&nbsp;</td>";
             if (gridType === 'radio') {
               // Add all the columns to the grid header row for each rating
               for (let i = 0; i < options.ratings.length; i++) {
@@ -349,6 +349,13 @@ export class CodeExportComponent implements OnInit {
         break;
 
         case 'submit':
+        options = this.data.questions[i];
+        body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide'>";
+        body += "<input type='submit' value='" + options.label + "' id='" + options.qid + "' style='background-color:" + options.backgroundColor + "; color:" + options.color + 
+                "; margin:" + options.margin + "; width:" + options.width +"; height:" + options.height + 
+                "; border:" + options.border + "; border-radius:" + options.borderRadius + "'>";
+        body += "</div></div>";
+        styles += "#" + options.qid + ":hover {background-color:" + options.hoverBackground +" !important; color:" + options.hoverColor +" !important}";
         break;
       }
     }
