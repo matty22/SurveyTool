@@ -184,7 +184,7 @@ export class CodeExportComponent implements OnInit {
           body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
-            body += "<label style='color:'" + options.color + ";'>" + this.data.questions[i].label + "</label>"; 
+            body += "<label style='color:" + options.color + ";'>" + this.data.questions[i].label + "</label>"; 
           }
           // If required is true, concat the required star
           if (required) {
@@ -206,6 +206,27 @@ export class CodeExportComponent implements OnInit {
         case 'checkbox':
           hide = options.hideQuestion;
           required = options.responseRequired;
+          label = this.data.questions[i].label;
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          // If hideQuestion is false, concat the label tag
+          if (!hide) {
+            body += "<label style='color:" + options.color + ";'>" + this.data.questions[i].label + "</label>"; 
+          }
+          // If required is true, concat the required star
+          if (required) {
+            body += "<span class='requiredStar'>*</span><div class='checkboxOuter'>";
+            for (let i = 0; i < options.questionOptions.length; i++) {
+              body += "<div class='checkboxInner'><input type='checkbox' name='" + label + "' value='" + options.questionOptions[i] + "' required>" +
+                      "<label>" + options.questionOptions[i] + "</label></div>"
+            }
+          } else {
+            body += "<div class='checkboxOuter'>";
+            for (let i = 0; i < options.questionOptions.length; i++) {
+              body += "<div class='checkboxInner'><input type='checkbox' name='" + label + "' value='" + options.questionOptions[i] + "'>" +
+                      "<label>" + options.questionOptions[i] + "</label></div>"
+            }
+          }
+          body += "</div></div></div>"
         break;
 
         case 'grid':
