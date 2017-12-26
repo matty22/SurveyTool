@@ -230,6 +230,83 @@ export class CodeExportComponent implements OnInit {
         case 'grid':
           hide = options.hideQuestion;
           required = options.responseRequired;
+          let gridType = options.gridType;
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          // If hideQuestion is false, concat the label tag
+          if (!hide) {
+            body += "<label style='color:" + options.color + ";'>" + this.data.questions[i].label + "</label>"; 
+          }
+          // If required is true, concat the required star
+          if (required) {
+            body += "<span class='requiredStar'>*</span>";
+            body += "<table class='gridTable' cellspacing='0' cellpadding='0'><tr><td class='gridTableHeaderRow' style='" + options.headerBackground +";'>&nbsp;</td>";
+            if (gridType === 'radio') {
+              // Add all the columns to the grid header row for each rating
+              for (let i = 0; i < options.ratings.length; i++) {
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i] + "</td>";
+              }
+              body += "</tr>";
+              // Add all the rows/columns to the grid for each option
+              for (let k = 0; k < options.questionOptions.length; k++) {
+                body += "<tr class='gridTableRow'>";
+                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k] + "</td>";
+                for (let j = 0; j < options.ratings.length; j++) {
+                  body += "<td><input type='radio' name='" + options.questionOptions[k] + "' required></td>";
+                }
+                body += "</tr>";
+              }
+            } else if (gridType === 'checkbox') {
+              // Add all the columns to the grid header row for each rating
+              for (let i = 0; i < options.ratings.length; i++) {
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i] + "</td>";
+              }
+              body += "</tr>"
+              // Ad all the rows/columns to the grid for each option
+              for (let k = 0; k < options.questionOptions.length; k++) {
+                body += "<tr class='gridTableRow'>";
+                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k] + "</td>";
+                for (let j = 0; j < options.ratings.length; j++) {
+                  body += "<td><input type='checkbox' name='" + options.questionOptions[k] + "' required></td>";
+                }
+                body += "</tr>";
+              }
+            }
+          } else {
+            body += "<table class='gridTable' cellspacing='0' cellpadding='0'><tr><td class='gridTableHeaderRow' style='" + options.headerBackground +";'>&nbsp;</td>";
+            if (gridType === 'radio') {
+              // Add all the columns to the grid header row for each rating
+              for (let i = 0; i < options.ratings.length; i++) {
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i] + "</td>";
+              }
+              body += "</tr>";
+              // Add all the rows/columns to the grid for each option
+              for (let k = 0; k < options.questionOptions.length; k++) {
+                body += "<tr class='gridTableRow'>";
+                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k] + "</td>";
+                for (let j = 0; j < options.ratings.length; j++) {
+                  body += "<td><input type='radio' name='" + options.questionOptions[k] + "'></td>";
+                }
+                body += "</tr>";
+              }
+            } else if (gridType === 'checkbox') {
+              // Add all the columns to the grid header row for each rating
+              for (let i = 0; i < options.ratings.length; i++) {
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i] + "</td>";
+              }
+              body += "</tr>"
+              // Ad all the rows/columns to the grid for each option
+              for (let k = 0; k < options.questionOptions.length; k++) {
+                body += "<tr class='gridTableRow'>";
+                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k] + "</td>";
+                for (let j = 0; j < options.ratings.length; j++) {
+                  body += "<td><input type='checkbox' name='" + options.questionOptions[k] + "'></td>";
+                }
+                body += "</tr>";
+              }
+            }
+          }
+          body += "</table></div></div>"
+
         break;
 
         case 'heading':
