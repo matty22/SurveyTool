@@ -336,6 +336,11 @@ export class CodeExportComponent implements OnInit {
         break;
 
         case 'divider':
+        options = this.data.questions[i];
+        body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'>";
+        body += "<div class='questionSide' style='padding:" + options.padding + "; width:" + options.width + "; border-bottom-width:" + options.borderWidth +
+                "; border-bottom-style:" + options.borderStyle + "; border-bottom-color:" + options.color + "'>";
+        body += "</div></div>";
         break;
 
         case 'spacer':

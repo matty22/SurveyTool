@@ -189,8 +189,8 @@
           </div>
 
           <!-- If question type is divider -->
-          <div class="surveyQuestion" *ngSwitchCase="'divider'">
-            <div class="questionSide divider" [ngStyle]="{'width': question.width, 'border-bottom-width': question.borderWidth, 'border-color': question.color, 'border-bottom-style': question.borderStyle}"></div>
+          <div class="surveyQuestion" *ngSwitchCase="'divider'" [ngStyle]="{'justify-content': question.align}">
+            <div class="questionSide" [ngStyle]="{'width': question.width, 'border-bottom-width': question.borderWidth, 'border-color': question.color, 'border-bottom-style': question.borderStyle, 'margin': question.padding}"></div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
               <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
@@ -199,7 +199,7 @@
 
           <!-- If question type is spacer -->
           <div class="surveyQuestion" *ngSwitchCase="'spacer'">
-            <div class="questionSide spacer" [ngStyle]="{'height': question.height}"></div>
+            <div class="questionSide" [ngStyle]="{'height': question.height}"></div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
               <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
@@ -266,7 +266,7 @@
           <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image', width: '80%', align: 'flex-start', padding: '0px 0px 0px 0px'}">
             <mat-icon>image</mat-icon>
           </mat-card>
-          <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider', width: '80%', borderWidth: '3px', borderStyle: 'solid', color: '#262626'}">
+          <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider', width: '80%', borderWidth: '3px', borderStyle: 'solid', color: '#262626', align: 'flex-start', padding: '0px 0px 0px 0px'}">
             <mat-icon>remove</mat-icon>
           </mat-card>
           <mat-card id="spacer" title="Spacer" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'spacer', height: '10px'}">
@@ -649,8 +649,17 @@
           <input matInput [(ngModel)]="questionToEdit.borderStyle" placeholder="Border Style">
         </mat-form-field>
         <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
+        </mat-form-field>
+        <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.color" placeholder="Border Color">
         </mat-form-field>
+        <p>Alignment</p>
+        <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
+          <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+        </mat-button-toggle-group>
       </div>
 
       <!-- SPACER ELEMENT -->
