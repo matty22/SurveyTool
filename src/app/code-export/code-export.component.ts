@@ -329,6 +329,10 @@ export class CodeExportComponent implements OnInit {
         break;
 
         case 'image':
+        options = this.data.questions[i];
+        body += "<div class='surveyQuestion'><div class='questionSide' style='justify-content:" + options.align + "; padding:" + options.padding + ";'>";
+        body += "<img src='" + options.src + "' width='" + options.width + "' height='auto'>"
+        body += "</div></div>";
         break;
 
         case 'divider':

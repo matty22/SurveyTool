@@ -179,7 +179,7 @@
 
           <!-- If question type is image -->
           <div class="surveyQuestion" *ngSwitchCase="'image'">
-            <div class="questionSide" [ngStyle]="{'justify-content': question.align}">
+            <div class="questionSide" [ngStyle]="{'justify-content': question.align, 'padding': question.padding}">
                 <img [src]="question.src" [ngStyle]="{'width': question.width}">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
@@ -263,7 +263,7 @@
           <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph', size: '14px', color: '#262626', padding: '0px 0px 0px 0px', align: 'flex-start'}">
             <mat-icon>text_fields</mat-icon>
           </mat-card>
-          <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image', width: '80%', align: 'flex-start'}">
+          <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image', width: '80%', align: 'flex-start', padding: '0px 0px 0px 0px'}">
             <mat-icon>image</mat-icon>
           </mat-card>
           <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider', width: '80%', borderWidth: '3px', borderStyle: 'solid', color: '#262626'}">
@@ -625,6 +625,9 @@
         </mat-form-field>
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.width" placeholder="Width in percentage">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
         </mat-form-field>
         <p>Alignment</p>
         <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
