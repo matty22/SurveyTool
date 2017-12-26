@@ -344,6 +344,8 @@ export class CodeExportComponent implements OnInit {
         break;
 
         case 'spacer':
+        options = this.data.questions[i];
+        body += "<div class='surveyQuestion'><div class='questionSide' style='height:" + options.height + ";'>&nbsp;</div></div>";
         break;
 
         case 'submit':
