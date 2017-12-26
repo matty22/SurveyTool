@@ -17,3 +17,4 @@ File Upload
 - Required attribute for checkboxes doesn't work the same as radio buttons in that for radio buttons for any set of buttons with the same
   name attribute, if any one of them is checked the required is fulfilled. For checkboxes, the required attribute is on a per
   checkbox basis ,so validation has to be done with JS to get the same type of experience
+- Make grid question have its own line, break the grid down to the next line (simple CSS adjustment probably)

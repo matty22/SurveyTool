@@ -306,10 +306,19 @@ export class CodeExportComponent implements OnInit {
             }
           }
           body += "</table></div></div>"
-
         break;
 
         case 'heading':
+        options = this.data.questions[i];
+        body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+        if (options.size === 'h1') {
+          body += "<h1 style='color:" + options.color + ";'>" + options.label + "</h1>";
+        } else if (options.size === 'h3') {
+          body += "<h3 style='color:" + options.color + ";'>" + options.label + "</h3>";
+        } else if (options.size === 'h5') {
+          body += "<h5 style='color:" + options.color + ";'>" + options.label + "</h5>";
+        }
+        body += "</div></div>";
         break;
 
         case 'paragraph':
