@@ -10,7 +10,6 @@ export class CodeExportComponent implements OnInit {
 
   // @Input() survey: any;
 
-  exportedSurvey: object;
   constructor(public dialogRef: MatDialogRef<CodeExportComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -19,7 +18,6 @@ export class CodeExportComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.exportedSurvey = this.data;
     this.translateHTML();
   }
 
