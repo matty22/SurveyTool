@@ -5,7 +5,7 @@
 .wrapper {
   display: flex;
   justify-content: space-around;
-  padding: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 50px;
   background-color: #ffffff;
   height: 100%;
   overflow: hidden;
@@ -58,7 +58,7 @@ mat-tab-group {
 
 .iconBlock {
   position: absolute;
-  left: 45%;
+  left: 50%;
 }
 
 mat-icon {
