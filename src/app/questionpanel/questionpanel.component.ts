@@ -71,6 +71,6 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
 
   // This exports the HTML and necessary CSS for the survey to display as expected
   exportHTML() {
-    let dialogRef = this.dialog.open(CodeExportComponent, {data: this.survey, width: '300px', height: '220px'});
+    let dialogRef = this.dialog.open(CodeExportComponent, {data: this.survey, width: '500px', height: '400px'});
   }
 }

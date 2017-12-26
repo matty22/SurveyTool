@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -8,8 +8,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class CodeExportComponent implements OnInit {
 
-  // @Input() survey: any;
-
+  exportedCode: string;
   constructor(public dialogRef: MatDialogRef<CodeExportComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -17,16 +16,11 @@ export class CodeExportComponent implements OnInit {
     
   }
 
-  ngOnChanges() {
-    this.translateHTML();
-  }
-
   closeDialog() {
     this.dialogRef.close(); 
   }
 
   translateHTML() {
-    console.log(this.data.questions);
     let styles: string = "<style>form{background-color:" + this.data.settings.background +"; border:" + this.data.settings.border + 
              "; border-radius:" + this.data.settings.borderRadius  + "; font-family:" + this.data.settings.font + 
              "; font-size:" + this.data.settings.fontSize + "; padding:" + this.data.settings.padding + 
@@ -361,8 +355,6 @@ export class CodeExportComponent implements OnInit {
     }
     styles += "</style>";
     body += "</form>";
-    console.log(styles);
-    console.log(body);
+    this.exportedCode = styles + body;
   }
-
 }
