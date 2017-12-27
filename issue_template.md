@@ -10,5 +10,5 @@
 ### **If this issue is a question or feature request, what is the motivation / use case for changing the current behavior?**
 ----
 
-### **Other information (e.g. detailed explanation, stacktraces, related issues, suggestions how to fix, links for us to have context, eg. stackoverflow, gitter, etc)**
+### **Other information (detailed explanation, stacktraces, related issues, suggestions on how to fix, links for context, eg. StackOverflow, Gitter, etc)**
 ----
