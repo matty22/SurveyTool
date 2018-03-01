@@ -530,11 +530,6 @@
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <p>Grid Type</p>
-      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.gridType">
-        <mat-button-toggle value="radio"><mat-icon>radio_button_checked</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="checkbox"><mat-icon>check_box</mat-icon></mat-button-toggle>
-      </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
@@ -558,6 +553,11 @@
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+      </mat-button-toggle-group>
+      <p>Grid Type</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.gridType">
+        <mat-button-toggle value="radio"><mat-icon>radio_button_checked</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="checkbox"><mat-icon>check_box</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
