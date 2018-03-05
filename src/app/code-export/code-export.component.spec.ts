@@ -1,25 +1,44 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
+import { async, TestBed, inject } from '@angular/core/testing';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { CodeExportComponent } from './code-export.component';
 
-describe('CodeExportComponent', () => {
-  let component: CodeExportComponent;
-  let fixture: ComponentFixture<CodeExportComponent>;
+describe('Code Export Component', () => {
+  let dialog: MatDialog;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CodeExportComponent ]
-    })
-    .compileComponents();
+      declarations: [CodeExportComponent],
+      imports: [
+        FormsModule,
+        MatDialogModule,
+        NoopAnimationsModule
+      ]
+    });
+
+    TestBed.overrideModule(BrowserDynamicTestingModule, {
+      set: {
+        entryComponents: [CodeExportComponent]
+      }
+    });
+
+    TestBed.compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CodeExportComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(inject([MatDialog],
+    (d: MatDialog) => {
+      dialog = d;
+    })
+  );
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should open a dialog with a component', () => {
+    const dialogRef = dialog.open(CodeExportComponent, {
+      data: { param: '1' }
+    });
+
+    // verify
+    expect(dialogRef.componentInstance instanceof CodeExportComponent).toBeTruthy();
   });
 });

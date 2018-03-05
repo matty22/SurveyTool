@@ -24,7 +24,7 @@
                 <p class="checkboxLabel" *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></p>
                 <div class="checkboxOuter">
                   <div class="checkboxInner" *ngFor="let button of question.options.questionOptions">
-                    <input type="radio" name="{{button}}" value="{{button}}">{{button}}
+                    <input type="radio" name="{{button.name}}" value="{{button.name}}">{{button.name}}
                   </div>
                 </div>
             </div>
@@ -40,8 +40,8 @@
                 <p class="checkboxLabel" *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{question.label}}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></p>
                 <div class="checkboxOuter">
                   <div class="checkboxInner" *ngFor="let option of question.options.questionOptions">
-                    <input type="checkbox" name="{{option}}" value="{{option}}">  
-                    <label for="{{option}}">{{ option }}</label>
+                    <input type="checkbox" name="{{option.name}}" value="{{option.name}}">  
+                    <label for="{{option.name}}">{{ option.name }}</label>
                   </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
           <div class="surveyQuestion" *ngSwitchCase="'select'" [ngStyle]="{'justify-content': question.options.align}">
             <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <select><option *ngFor="let option of question.options.questionOptions">{{option}}</option></select>
+                <select><option *ngFor="let option of question.options.questionOptions">{{option.name}}</option></select>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -94,10 +94,10 @@
               <table class="gridTable" cellpadding="0" cellspacing="0">
                 <tr>
                   <td class="gridTableHeaderRow" [ngStyle]="{'background-color':question.options.headerBackground}">&nbsp;</td>
-                  <td  class="gridTableHeaderRow" [ngStyle]="{'background-color':question.options.headerBackground, 'color': question.options.headerColor}" *ngFor="let header of question.options.ratings">{{header}}</td>
+                  <td  class="gridTableHeaderRow" [ngStyle]="{'background-color':question.options.headerBackground, 'color': question.options.headerColor}" *ngFor="let header of question.options.ratings">{{header.name}}</td>
                 </tr>
                 <tr class="gridTableRow" *ngFor="let option of question.options.questionOptions">
-                  <td [ngStyle]="{'background-color': question.options.leftColumnBackground, 'color': question.options.leftColumnColor}">{{option}}</td>
+                  <td [ngStyle]="{'background-color': question.options.leftColumnBackground, 'color': question.options.leftColumnColor}">{{option.name}}</td>
                   <td *ngFor="let rating of question.options.ratings">
                     <input *ngIf="question.options.gridType == 'radio'" type="radio">
                     <input *ngIf="question.options.gridType == 'checkbox'" type="checkbox">
@@ -241,16 +241,16 @@
           <mat-card id="phone" title="Phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Phone: ', type: 'phone', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Phone'}}">
             <mat-icon>phone</mat-icon>
           </mat-card>
-          <mat-card id="dropdown" title="Dropdown List" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option']}}">
+          <mat-card id="dropdown" title="Dropdown List" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
             <mat-icon>toc</mat-icon>
           </mat-card>
-          <mat-card id="radio" title="Radio Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option']}}">
+          <mat-card id="radio" title="Radio Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
             <mat-icon>radio_button_checked</mat-icon>
           </mat-card>
-          <mat-card id="checkbox" title="Checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: ['New Option']}}">
+          <mat-card id="checkbox" title="Checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
               <mat-icon>check_box</mat-icon>
           </mat-card>
-          <mat-card id="grid" title="Grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', gridType: 'radio', headerBackground: '#7f7f7f', headerColor: '#262626', leftColumnBackground: '#ffffff', leftColumnColor: '#262626', questionOptions: ['New Option'], ratings: ['New Rating']}}">
+          <mat-card id="grid" title="Grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', gridType: 'radio', headerBackground: '#7f7f7f', headerColor: '#262626', leftColumnBackground: '#ffffff', leftColumnColor: '#262626', questionOptions: [{name: 'New Option'}], ratings: [{name: 'New Rating'}]}}">
             <mat-icon>view_module</mat-icon>
           </mat-card>
         </section>
@@ -459,8 +459,8 @@
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
-        <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
+        <input type="text" [(ngModel)]="option.name">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
@@ -484,8 +484,8 @@
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
-        <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
+        <input type="text" [(ngModel)]="option.name">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
@@ -509,8 +509,8 @@
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
-        <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
+        <input type="text" [(ngModel)]="option.name">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
@@ -547,13 +547,13 @@
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
-        <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
+        <input type="text" [(ngModel)]="option.name">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
       <p>Rating Options</p>
-      <div id="questionOptionList" *ngFor="let rating of tempRatings; index as i; last as isLast;">
-        <input type="text" [(ngModel)]="questionToEdit.options.ratings[i]">
+      <div id="questionOptionList" *ngFor="let rating of questionToEdit.options.ratings; last as isLast;">
+        <input type="text" [(ngModel)]="rating.name">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addRatingOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
