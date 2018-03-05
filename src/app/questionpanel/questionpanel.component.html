@@ -465,7 +465,7 @@
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
-      <div id="questionOptionList" *ngFor="let option of tempQuestionOptions; index as i; last as isLast;">
+      <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; index as i; last as isLast;">
         <input type="text" [(ngModel)]="questionToEdit.options.questionOptions[i]">
         <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
