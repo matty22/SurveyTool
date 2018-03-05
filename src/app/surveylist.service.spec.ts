@@ -9,7 +9,5 @@ describe('SurveylistService', () => {
     });
   });
 
-  it('should be created', inject([SurveylistService], (service: SurveylistService) => {
-    expect(service).toBeTruthy();
-  }));
+  
 });

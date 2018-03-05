@@ -15,8 +15,6 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
   @Input() survey: any;
   showIcons: boolean = true;
   editQuestionType: string;
-  tempQuestionOptions: string[] = [" "];
-  tempRatings: string[] = [" "];
   questionIndex: number;
   questionToEdit:any = {
     label: '', 
@@ -61,12 +59,12 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
 
   // This is a temporary hacky solution to fix my problem with adding radio, checkbox, and grid question options
   addQuestionOption() {
-    this.tempQuestionOptions.push(" ");
+    this.questionToEdit.options.questionOptions.push({name: " "});
   }
 
   // This is a temporary hacky solution to fix my problem with adding grid rating options
   addRatingOption() {
-    this.tempRatings.push(" ");
+    this.questionToEdit.options.ratings.push({name: " "});
   }
 
   // This exports the HTML and necessary CSS for the survey to display as expected
