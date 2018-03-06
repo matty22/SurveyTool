@@ -1,10 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { QuestionpanelComponent } from './questionpanel.component';
 
 describe('QuestionpanelComponent', () => {
   let component: QuestionpanelComponent;
   let fixture: ComponentFixture<QuestionpanelComponent>;
+  let debugElement: DebugElement;
+  let htmlElement: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,7 +22,5 @@ describe('QuestionpanelComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  
 });

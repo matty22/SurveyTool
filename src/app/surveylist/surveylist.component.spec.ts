@@ -1,10 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { SurveylistComponent } from './surveylist.component';
 
 describe('SurveylistComponent', () => {
   let component: SurveylistComponent;
   let fixture: ComponentFixture<SurveylistComponent>;
+  let debugElement: DebugElement;
+  let htmlElement: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,7 +22,5 @@ describe('SurveylistComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  
 });
