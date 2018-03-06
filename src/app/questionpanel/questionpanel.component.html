@@ -296,9 +296,8 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -329,9 +328,8 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -362,9 +360,8 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -392,9 +389,8 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -425,9 +421,8 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -455,9 +450,8 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -481,9 +475,8 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -507,9 +500,8 @@
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -530,34 +522,29 @@
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
+      <p>Grid Type</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.gridType">
+        <mat-button-toggle value="radio"><mat-icon>radio_button_checked</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="checkbox"><mat-icon>check_box</mat-icon></mat-button-toggle>
+      </mat-button-toggle-group>
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
       </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.color" placeholder="Text Color">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.headerBackground" placeholder="Header Background Color">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.headerColor" placeholder="Header Text Color">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.leftColumnBackground" placeholder="Left Column Background Color">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.leftColumnColor" placeholder="Left Column Text Color">
-      </mat-form-field>
+      <p>Question Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.color">
+      <p>Header Background Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.headerBackground">
+      <p>Header Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.headerColor">
+      <p>Left Column Background Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.leftColumnBackground">
+      <p>Left Column Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.options.leftColumnColor">
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.options.align">
         <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
-      </mat-button-toggle-group>
-      <p>Grid Type</p>
-      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.gridType">
-        <mat-button-toggle value="radio"><mat-icon>radio_button_checked</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="checkbox"><mat-icon>check_box</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
@@ -582,9 +569,8 @@
         <mat-button-toggle value="h3" id="mediumT">T</mat-button-toggle>
         <mat-button-toggle value="h1" id="largeT">T</mat-button-toggle>
       </mat-button-toggle-group>
-      <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.color" placeholder="Text Color">
-      </mat-form-field>
+      <p>Text Color:</p>
+      <input type="color" [(ngModel)]="questionToEdit.color">
       <mat-form-field>
         <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
       </mat-form-field>
@@ -604,9 +590,8 @@
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.size" placeholder="Font Size">
         </mat-form-field>
-        <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.color" placeholder="Text Color">
-        </mat-form-field>
+        <p>Text Color:</p>
+        <input type="color" [(ngModel)]="questionToEdit.color">
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
         </mat-form-field>
@@ -651,9 +636,8 @@
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
         </mat-form-field>
-        <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.color" placeholder="Border Color">
-        </mat-form-field>
+        <p>Border Color:</p>
+        <input type="color" [(ngModel)]="questionToEdit.color">
         <p>Alignment</p>
         <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
           <mat-button-toggle value="flex-start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
@@ -674,18 +658,14 @@
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.label" placeholder="Button Text">
         </mat-form-field>
-        <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.backgroundColor" placeholder="Background Color">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.hoverBackground" placeholder="Hover Background Color">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.color" placeholder="Text Color">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.hoverColor" placeholder="Hover Text Color">
-        </mat-form-field>
+        <p>Background Color:</p>
+        <input type="color" [(ngModel)]="questionToEdit.backgroundColor">
+        <p>Hover Background Color:</p>
+        <input type="color" [(ngModel)]="questionToEdit.hoverBackground">
+        <p>Text Color:</p>
+        <input type="color" [(ngModel)]="questionToEdit.color">
+        <p>Hover Text Color:</p>
+        <input type="color" [(ngModel)]="questionToEdit.hoverColor">
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.margin" placeholder="Margin">
         </mat-form-field>
