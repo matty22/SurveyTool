@@ -461,7 +461,7 @@
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
         <input type="text" [(ngModel)]="option.name">
-        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>clear</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>remove_circle_outline</mat-icon></button>
         <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
@@ -487,7 +487,7 @@
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
         <input type="text" [(ngModel)]="option.name">
-        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>clear</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>remove_circle_outline</mat-icon></button>
         <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
@@ -513,7 +513,7 @@
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
         <input type="text" [(ngModel)]="option.name">
-        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>clear</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>remove_circle_outline</mat-icon></button>
         <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
@@ -552,13 +552,13 @@
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
         <input type="text" [(ngModel)]="option.name">
-        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>clear</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>remove_circle_outline</mat-icon></button>
         <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
       <p>Rating Options</p>
       <div id="questionOptionList" *ngFor="let rating of questionToEdit.options.ratings; last as isLast;">
         <input type="text" [(ngModel)]="rating.name">
-        <button class="optionAddDelete" title="Remove option" (click)="removeRatingOption(rating)"><mat-icon>clear</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeRatingOption(rating)"><mat-icon>remove_circle_outline</mat-icon></button>
         <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addRatingOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
