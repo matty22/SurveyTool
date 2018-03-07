@@ -106,10 +106,11 @@ mat-button-toggle-group {
   align-items: center;
 }
 
-#addInputButton {
+.optionAddDelete {
   border: none;
   background: none;
   color: #ffffff;
+  cursor: pointer;
 }
 
 #saveQuestionSettingsButton {
