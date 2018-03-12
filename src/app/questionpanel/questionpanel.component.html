@@ -209,7 +209,7 @@
           <!-- If element type is button -->
           <div class="surveyQuestion" *ngSwitchCase="'submit'"[ngStyle]="{'justify-content': question.align}">
             <div class="questionSide">
-              <input (mouseover)="hover = true" (mouseout)="hover = null" type="submit" [value]="question.label" [ngStyle]="{'background-color': hover ? question.hoverBackground : question.backgroundColor, 'color': hover ? question.hoverColor : question.color, 'border': question.border, 'border-radius': question.borderRadius, 'margin': question.margin, 'width': question.width, 'height': question.height}">
+              <input (mouseover)="hover = true" (mouseout)="hover = null" type="submit" [value]="question.label" [ngStyle]="{'background-color': hover ? question.hoverBackground : question.backgroundColor, 'color': hover ? question.hoverColor : question.color, 'border': question.border, 'border-radius': question.borderRadius, 'font-size': question.size, 'margin': question.margin, 'width': question.width, 'height': question.height}">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -272,7 +272,7 @@
           <mat-card id="spacer" title="Spacer" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'spacer', height: '10px'}">
             <mat-icon>crop_16_9</mat-icon>
           </mat-card>
-          <mat-card id="button" title="Submit Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Button', type: 'submit', backgroundColor: '#9f9f9f', color: '#262626', margin: '0px 0px 0px 0px', width: '100px', height: '25px', align: 'flex-start', hoverBackground: '#dddddd', hoverColor: '#ffffff', border: '1px solid #000000', borderRadius: '0px'}">
+          <mat-card id="button" title="Submit Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Button', type: 'submit', backgroundColor: '#9f9f9f', color: '#262626', size: '14px', margin: '0px 0px 0px 0px', width: '100px', height: '25px', align: 'flex-start', hoverBackground: '#dddddd', hoverColor: '#ffffff', border: '1px solid #000000', borderRadius: '0px'}">
             <mat-icon>touch_app</mat-icon>
           </mat-card>
         </section>
@@ -671,6 +671,9 @@
         <input type="color" [(ngModel)]="questionToEdit.color">
         <p>Hover Text Color:</p>
         <input type="color" [(ngModel)]="questionToEdit.hoverColor">
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.size" placeholder="Font Size">
+        </mat-form-field>
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.margin" placeholder="Margin">
         </mat-form-field>
