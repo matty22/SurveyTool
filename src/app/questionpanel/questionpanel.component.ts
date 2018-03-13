@@ -22,7 +22,8 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
     options: {
       hideQuestion: '', 
       responseRequired: '', 
-      padding: '', 
+      sidePadding: '', 
+      verticalPadding: '',
       color: '', 
       align: '', 
       questionOptions: [],
