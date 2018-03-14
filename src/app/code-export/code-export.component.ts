@@ -42,7 +42,7 @@ export class CodeExportComponent implements OnInit {
         case 'text':
           let hide = options.hideQuestion;
           let required = options.responseRequired;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color + ";'>" + this.data.questions[i].label + "</label>";
@@ -60,7 +60,7 @@ export class CodeExportComponent implements OnInit {
         case 'textarea':
           hide = options.hideQuestion;
           required = options.responseRequired;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color +";'>" + this.data.questions[i].label + "</label>";
@@ -78,7 +78,7 @@ export class CodeExportComponent implements OnInit {
         case 'email':
           hide = options.hideQuestion;
           required = options.responseRequired;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color +";'>" + this.data.questions[i].label + "</label>";
@@ -96,7 +96,7 @@ export class CodeExportComponent implements OnInit {
         case 'address':
           hide = options.hideQuestion;
           required = options.responseRequired;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color +";'>" + this.data.questions[i].label + "</label>";
@@ -126,7 +126,7 @@ export class CodeExportComponent implements OnInit {
         case 'phone':
           hide = options.hideQuestion;
           required = options.responseRequired;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color +";'>" + this.data.questions[i].label + "</label>";
@@ -145,7 +145,7 @@ export class CodeExportComponent implements OnInit {
         case 'select':
           hide = options.hideQuestion;
           required = options.responseRequired;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:'" + options.color + ";'>" + this.data.questions[i].label + "</label>";
@@ -155,13 +155,13 @@ export class CodeExportComponent implements OnInit {
             body += "<span class='requiredStar'>*</span>";
             body += "<select required><option value='' selected>Choose Option</option>";
             for (let i = 0; i < options.questionOptions.length; i++) {
-              body += "<option value='" + options.questionOptions[i] + "'>" + options.questionOptions[i] + "</option>";
+              body += "<option value='" + options.questionOptions[i].name + "'>" + options.questionOptions[i].name + "</option>";
             }
             body += "</select>";
           } else {
             body += "<select><option value='' selected>Choose Option</option>";
             for (let i = 0; i < options.questionOptions.length; i++) {
-              body += "<option value='" + options.questionOptions[i] + "'>" + options.questionOptions[i] + "</option>";
+              body += "<option value='" + options.questionOptions[i].name + "'>" + options.questionOptions[i].name + "</option>";
             }
             body += "</select>";
           }
@@ -173,7 +173,7 @@ export class CodeExportComponent implements OnInit {
           hide = options.hideQuestion;
           required = options.responseRequired;
           let label = this.data.questions[i].label;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color + ";'>" + this.data.questions[i].label + "</label>"; 
@@ -182,14 +182,14 @@ export class CodeExportComponent implements OnInit {
           if (required) {
             body += "<span class='requiredStar'>*</span><div class='checkboxOuter'>";
             for (let i = 0; i < options.questionOptions.length; i++) {
-              body += "<div class='checkboxInner'><input type='radio' name='" + label + "' value='" + options.questionOptions[i] + "' required>" +
-                      "<label>" + options.questionOptions[i] + "</label></div>"
+              body += "<div class='checkboxInner'><input type='radio' name='" + label + "' value='" + options.questionOptions[i].name + "' required>" +
+                      "<label>" + options.questionOptions[i].name + "</label></div>"
             }
           } else {
             body += "<div class='checkboxOuter'>";
             for (let i = 0; i < options.questionOptions.length; i++) {
-              body += "<div class='checkboxInner'><input type='radio' name='" + label + "' value='" + options.questionOptions[i] + "'>" +
-                      "<label>" + options.questionOptions[i] + "</label></div>"
+              body += "<div class='checkboxInner'><input type='radio' name='" + label + "' value='" + options.questionOptions[i].name + "'>" +
+                      "<label>" + options.questionOptions[i].name + "</label></div>"
             }
           }
           body += "</div></div></div>"
@@ -199,7 +199,7 @@ export class CodeExportComponent implements OnInit {
           hide = options.hideQuestion;
           required = options.responseRequired;
           label = this.data.questions[i].label;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color + ";'>" + this.data.questions[i].label + "</label>"; 
@@ -208,14 +208,14 @@ export class CodeExportComponent implements OnInit {
           if (required) {
             body += "<span class='requiredStar'>*</span><div class='checkboxOuter'>";
             for (let i = 0; i < options.questionOptions.length; i++) {
-              body += "<div class='checkboxInner'><input type='checkbox' name='" + label + "' value='" + options.questionOptions[i] + "' required>" +
-                      "<label>" + options.questionOptions[i] + "</label></div>"
+              body += "<div class='checkboxInner'><input type='checkbox' name='" + label + "' value='" + options.questionOptions[i].name + "' required>" +
+                      "<label>" + options.questionOptions[i].name + "</label></div>"
             }
           } else {
             body += "<div class='checkboxOuter'>";
             for (let i = 0; i < options.questionOptions.length; i++) {
-              body += "<div class='checkboxInner'><input type='checkbox' name='" + label + "' value='" + options.questionOptions[i] + "'>" +
-                      "<label>" + options.questionOptions[i] + "</label></div>"
+              body += "<div class='checkboxInner'><input type='checkbox' name='" + label + "' value='" + options.questionOptions[i].name + "'>" +
+                      "<label>" + options.questionOptions[i].name + "</label></div>"
             }
           }
           body += "</div></div></div>"
@@ -225,7 +225,7 @@ export class CodeExportComponent implements OnInit {
           hide = options.hideQuestion;
           required = options.responseRequired;
           let gridType = options.gridType;
-          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide gridQuestion' style='padding:" + options.padding + ";'>";
+          body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide gridQuestion' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
           // If hideQuestion is false, concat the label tag
           if (!hide) {
             body += "<label style='color:" + options.color + ";'>" + this.data.questions[i].label + "</label>"; 
@@ -237,30 +237,30 @@ export class CodeExportComponent implements OnInit {
             if (gridType === 'radio') {
               // Add all the columns to the grid header row for each rating
               for (let i = 0; i < options.ratings.length; i++) {
-                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" + options.ratings[i] + "</td>";
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" + options.ratings[i].name + "</td>";
               }
               body += "</tr>";
               // Add all the rows/columns to the grid for each option
               for (let k = 0; k < options.questionOptions.length; k++) {
                 body += "<tr class='gridTableRow'>";
-                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k] + "</td>";
+                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k].name + "</td>";
                 for (let j = 0; j < options.ratings.length; j++) {
-                  body += "<td><input type='radio' name='" + options.questionOptions[k] + "' required></td>";
+                  body += "<td><input type='radio' name='" + options.questionOptions[k].name + "' required></td>";
                 }
                 body += "</tr>";
               }
             } else if (gridType === 'checkbox') {
               // Add all the columns to the grid header row for each rating
               for (let i = 0; i < options.ratings.length; i++) {
-                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i] + "</td>";
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i].name + "</td>";
               }
               body += "</tr>"
               // Ad all the rows/columns to the grid for each option
               for (let k = 0; k < options.questionOptions.length; k++) {
                 body += "<tr class='gridTableRow'>";
-                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k] + "</td>";
+                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k].name + "</td>";
                 for (let j = 0; j < options.ratings.length; j++) {
-                  body += "<td><input type='checkbox' name='" + options.questionOptions[k] + "' required></td>";
+                  body += "<td><input type='checkbox' name='" + options.questionOptions[k].name + "' required></td>";
                 }
                 body += "</tr>";
               }
@@ -270,30 +270,30 @@ export class CodeExportComponent implements OnInit {
             if (gridType === 'radio') {
               // Add all the columns to the grid header row for each rating
               for (let i = 0; i < options.ratings.length; i++) {
-                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i] + "</td>";
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i].name + "</td>";
               }
               body += "</tr>";
               // Add all the rows/columns to the grid for each option
               for (let k = 0; k < options.questionOptions.length; k++) {
                 body += "<tr class='gridTableRow'>";
-                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k] + "</td>";
+                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k].name + "</td>";
                 for (let j = 0; j < options.ratings.length; j++) {
-                  body += "<td><input type='radio' name='" + options.questionOptions[k] + "'></td>";
+                  body += "<td><input type='radio' name='" + options.questionOptions[k].name + "'></td>";
                 }
                 body += "</tr>";
               }
             } else if (gridType === 'checkbox') {
               // Add all the columns to the grid header row for each rating
               for (let i = 0; i < options.ratings.length; i++) {
-                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i] + "</td>";
+                body += "<td class='gridTableHeaderRow' style='background-color:" + options.headerBackground + "; color:" + options.headerColor +";'>" +options.ratings[i].name + "</td>";
               }
               body += "</tr>"
               // Ad all the rows/columns to the grid for each option
               for (let k = 0; k < options.questionOptions.length; k++) {
                 body += "<tr class='gridTableRow'>";
-                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k] + "</td>";
+                body += "<td style='background-color:" + options.leftColumnBackground + "; color:" + options.leftColumnColor +";'>" + options.questionOptions[k].name + "</td>";
                 for (let j = 0; j < options.ratings.length; j++) {
-                  body += "<td><input type='checkbox' name='" + options.questionOptions[k] + "'></td>";
+                  body += "<td><input type='checkbox' name='" + options.questionOptions[k].name + "'></td>";
                 }
                 body += "</tr>";
               }
@@ -304,7 +304,7 @@ export class CodeExportComponent implements OnInit {
 
         case 'heading':
         options = this.data.questions[i];
-        body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+        body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
         if (options.size === 'h1') {
           body += "<h1 style='color:" + options.color + ";'>" + options.label + "</h1>";
         } else if (options.size === 'h3') {
@@ -317,14 +317,14 @@ export class CodeExportComponent implements OnInit {
 
         case 'paragraph':
         options = this.data.questions[i];
-        body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.padding + ";'>";
+        body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
         body += "<p style='font-size:" + options.size + "; color:" + options.color + ";'>" + options.label + "</p>"
         body += "</div></div>";
         break;
 
         case 'image':
         options = this.data.questions[i];
-        body += "<div class='surveyQuestion'><div class='questionSide' style='justify-content:" + options.align + "; padding:" + options.padding + ";'>";
+        body += "<div class='surveyQuestion'><div class='questionSide' style='justify-content:" + options.align + "; padding:" + options.verticalPadding + " " + options.sidePadding + ";'>";
         body += "<img src='" + options.src + "' width='" + options.width + "' height='auto'>"
         body += "</div></div>";
         break;
@@ -332,7 +332,7 @@ export class CodeExportComponent implements OnInit {
         case 'divider':
         options = this.data.questions[i];
         body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'>";
-        body += "<div class='questionSide' style='padding:" + options.padding + "; width:" + options.width + "; border-bottom-width:" + options.borderWidth +
+        body += "<div class='questionSide' style='padding:" + options.verticalPadding + " " + options.sidePadding + "; width:" + options.width + "; border-bottom-width:" + options.borderWidth +
                 "; border-bottom-style:" + options.borderStyle + "; border-bottom-color:" + options.color + "'>";
         body += "</div></div>";
         break;
@@ -346,7 +346,7 @@ export class CodeExportComponent implements OnInit {
         options = this.data.questions[i];
         body += "<div class='surveyQuestion' style='justify-content:" + options.align + ";'><div class='questionSide'>";
         body += "<input type='submit' value='" + options.label + "' id='" + options.qid + "' style='background-color:" + options.backgroundColor + "; color:" + options.color + 
-                "; margin:" + options.margin + "; width:" + options.width +"; height:" + options.height + 
+                "; margin:" + options.verticalMargin + " " + options.sideMargin + "; width:" + options.width +"; height:" + options.height + 
                 "; border:" + options.border + "; border-radius:" + options.borderRadius + "'>";
         body += "</div></div>";
         styles += "#" + options.qid + ":hover {background-color:" + options.hoverBackground +" !important; color:" + options.hoverColor +" !important}";
