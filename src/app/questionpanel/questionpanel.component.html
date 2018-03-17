@@ -16,7 +16,7 @@
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
-          </div>
+          </div> 
           
           <!-- If question type is radio -->
           <div class="surveyQuestion" *ngSwitchCase="'radio'" [ngStyle]="{'justify-content': question.options.align}">

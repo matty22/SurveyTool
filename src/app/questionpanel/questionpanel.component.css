@@ -46,7 +46,7 @@ mat-tab-group {
 }
 
 #dropzone {
-  width: 500px;
+  width: 600px;
   border: 1px dashed green;
   background-color: #ffffff;
   padding: 10px 10px;
@@ -54,11 +54,12 @@ mat-tab-group {
   display: flex;
   flex-direction: column;
   cursor: auto !important;
+  position: relative;
 }
 
 .iconBlock {
   position: absolute;
-  left: 50%;
+  right: 5px;
 }
 
 mat-icon {
@@ -219,3 +220,17 @@ h1, h3, h5 {
 }
 
 /* END CSS THAT AFFECTS FORM */
+
+
+@media screen and (max-width: 1200px) {
+  #dropzone {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #dropzone {
+    width: 425px;
+  }
+
+}
