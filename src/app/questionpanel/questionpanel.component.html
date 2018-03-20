@@ -8,7 +8,7 @@
 
           <!-- If question type is text -->
           <div class="surveyQuestion" *ngSwitchCase="'text'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
             </div>
@@ -16,11 +16,11 @@
                 <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
                 <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
             </div>
-          </div>
+          </div> 
           
           <!-- If question type is radio -->
           <div class="surveyQuestion" *ngSwitchCase="'radio'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
                 <p class="checkboxLabel" *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></p>
                 <div class="checkboxOuter">
                   <div class="checkboxInner" *ngFor="let button of question.options.questionOptions">
@@ -36,7 +36,7 @@
           
           <!-- If question type is checkbox -->
           <div class="surveyQuestion" *ngSwitchCase="'checkbox'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
                 <p class="checkboxLabel" *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{question.label}}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></p>
                 <div class="checkboxOuter">
                   <div class="checkboxInner" *ngFor="let option of question.options.questionOptions">
@@ -53,7 +53,7 @@
           
           <!-- If question type is select list -->
           <div class="surveyQuestion" *ngSwitchCase="'select'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <select><option *ngFor="let option of question.options.questionOptions">{{option.name}}</option></select>
             </div>
@@ -65,7 +65,7 @@
           
           <!-- If question type is textarea -->
           <div class="surveyQuestion" *ngSwitchCase="'textarea'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <textarea [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" cols="20" rows="3"></textarea>
             </div>
@@ -75,21 +75,9 @@
             </div>
           </div>
           
-          <!-- If question type is profile -->
-          <div class="surveyQuestion" *ngSwitchCase="'profile'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
-                <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
-                <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
-            </div>
-            <div *ngIf="i == hoveredIndex" class="iconBlock">
-                <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
-                <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
-            </div>
-          </div>
-          
           <!-- If question type is grid -->
           <div class="surveyQuestion" *ngSwitchCase="'grid'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide gridQuestion" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide gridQuestion" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
               <p *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></p>
               <table class="gridTable" cellpadding="0" cellspacing="0">
                 <tr>
@@ -113,7 +101,7 @@
           
           <!-- If question type is phone -->
           <div class="surveyQuestion" *ngSwitchCase="'phone'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
             </div>
@@ -125,7 +113,7 @@
           
           <!-- If question type is email -->
           <div class="surveyQuestion" *ngSwitchCase="'email'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
                 <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
                 <input [placeholder]="question.options.placeholder" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="email">
             </div>
@@ -137,7 +125,7 @@
           
           <!-- If question type is address -->
           <div class="surveyQuestion" *ngSwitchCase="'address'" [ngStyle]="{'justify-content': question.options.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.options.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.options.sidePadding, 'padding-right': question.options.sidePadding, 'padding-top': question.options.verticalPadding, 'padding-bottom': question.options.verticalPadding}">
               <label *ngIf="!question.options.hideQuestion" [ngStyle]="{'color': question.options.color}">{{ question.label }}<span *ngIf="question.options.responseRequired" class="requiredStar">*</span></label>
               <div class="addressBlock">
                 <input placeholder="Street Address" [ngStyle]="{'border-radius': question.options.borderRadius, 'border': question.options.border}" type="text">
@@ -154,7 +142,7 @@
           </div>
 
           <!-- If question type is heading -->
-          <div class="surveyQuestion heading" *ngSwitchCase="'heading'" [ngStyle]="{'justify-content': question.align, 'padding': question.padding}">
+          <div class="surveyQuestion heading" *ngSwitchCase="'heading'" [ngStyle]="{'justify-content': question.align, 'padding-left': question.sidePadding, 'padding-right': question.sidePadding, 'padding-top': question.verticalPadding, 'padding-bottom': question.verticalPadding}">
             <div class="questionSide" [ngSwitch]="question.size">
               <h5 *ngSwitchCase="'h5'" [ngStyle]="{'color': question.color}">{{question.label}}</h5>
               <h3 *ngSwitchCase="'h3'" [ngStyle]="{'color': question.color}">{{question.label}}</h3>
@@ -168,7 +156,7 @@
 
           <!-- If question type is paragraph -->
           <div class="surveyQuestion" *ngSwitchCase="'paragraph'" [ngStyle]="{'justify-content': question.align}">
-            <div class="questionSide" [ngStyle]="{'padding': question.padding}">
+            <div class="questionSide" [ngStyle]="{'padding-left': question.sidePadding, 'padding-right': question.sidePadding, 'padding-top': question.verticalPadding, 'padding-bottom': question.verticalPadding}">
               <p [ngStyle]="{'font-size': question.size, 'color': question.color}">{{question.label}}</p>
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
@@ -179,7 +167,7 @@
 
           <!-- If question type is image -->
           <div class="surveyQuestion" *ngSwitchCase="'image'">
-            <div class="questionSide" [ngStyle]="{'justify-content': question.align, 'padding': question.padding}">
+            <div class="questionSide" [ngStyle]="{'justify-content': question.align, 'padding-left': question.sidePadding, 'padding-right': question.sidePadding, 'padding-top': question.verticalPadding, 'padding-bottom': question.verticalPadding}">
                 <img [src]="question.src" [ngStyle]="{'width': question.width}">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
@@ -190,7 +178,7 @@
 
           <!-- If question type is divider -->
           <div class="surveyQuestion" *ngSwitchCase="'divider'" [ngStyle]="{'justify-content': question.align}">
-            <div class="questionSide" [ngStyle]="{'width': question.width, 'border-bottom-width': question.borderWidth, 'border-color': question.color, 'border-bottom-style': question.borderStyle, 'margin': question.padding}"></div>
+            <div class="questionSide" [ngStyle]="{'width': question.width, 'border-bottom-width': question.borderWidth, 'border-color': question.color, 'border-bottom-style': question.borderStyle, 'margin-left': question.sidePadding, 'margin-right': question.sidePadding, 'margin-top': question.verticalPadding, 'margin-bottom': question.verticalPadding}"></div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
               <mat-icon (click)="deleteQuestion(survey, question)">delete</mat-icon>
@@ -209,7 +197,7 @@
           <!-- If element type is button -->
           <div class="surveyQuestion" *ngSwitchCase="'submit'"[ngStyle]="{'justify-content': question.align}">
             <div class="questionSide">
-              <input (mouseover)="hover = true" (mouseout)="hover = null" type="submit" [value]="question.label" [ngStyle]="{'background-color': hover ? question.hoverBackground : question.backgroundColor, 'color': hover ? question.hoverColor : question.color, 'border': question.border, 'border-radius': question.borderRadius, 'margin': question.margin, 'width': question.width, 'height': question.height}">
+              <input (mouseover)="hover = true" (mouseout)="hover = null" type="submit" [value]="question.label" [ngStyle]="{'background-color': hover ? question.hoverBackground : question.backgroundColor, 'color': hover ? question.hoverColor : question.color, 'border': question.border, 'border-radius': question.borderRadius, 'font-size': question.size, 'margin-left': question.sideMargin, 'margin-right': question.sideMargin, 'margin-top': question.verticalMargin, 'margin-bottom': question.verticalMargin, 'width': question.width, 'height': question.height}">
             </div>
             <div *ngIf="i == hoveredIndex" class="iconBlock">
               <mat-icon (click)="sidenav.open(); adjustQuestionSettings(question)">settings</mat-icon>
@@ -226,53 +214,53 @@
     <mat-tab-group>
       <mat-tab label="Questions">
         <section id="questionBank">
-          <mat-card id="text" title="Single Text Field" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'text', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Text'}}">
+          <mat-card id="text" title="Single Text Field" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'text', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Text'}}">
             <mat-icon>short_text</mat-icon>
           </mat-card>
-          <mat-card id="longText" title="Long Text Field" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'textarea', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Long Text'}}">
+          <mat-card id="longText" title="Long Text Field" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Enter your text: ', type: 'textarea', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Long Text'}}">
             <mat-icon>subject</mat-icon>
           </mat-card>
-          <mat-card id="email" title="Email" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Email: ', type: 'email', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Email'}}">
+          <mat-card id="email" title="Email" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Email: ', type: 'email', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Email'}}">
             <mat-icon>mail_outline</mat-icon>
           </mat-card>
-          <mat-card id="address" title="Address" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Address: ', type: 'address', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a'}}">
+          <mat-card id="address" title="Address" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Address: ', type: 'address', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a'}}">
             <mat-icon>place</mat-icon>
           </mat-card>
-          <mat-card id="phone" title="Phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Phone: ', type: 'phone', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Phone'}}">
+          <mat-card id="phone" title="Phone" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Phone: ', type: 'phone', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', borderRadius: '0px', border: '1px solid #5a5a5a', placeholder: 'Phone'}}">
             <mat-icon>phone</mat-icon>
           </mat-card>
-          <mat-card id="dropdown" title="Dropdown List" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
+          <mat-card id="dropdown" title="Dropdown List" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Dropdown list: ', type: 'select', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
             <mat-icon>toc</mat-icon>
           </mat-card>
-          <mat-card id="radio" title="Radio Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
+          <mat-card id="radio" title="Radio Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Radio Question: ', type: 'radio', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
             <mat-icon>radio_button_checked</mat-icon>
           </mat-card>
-          <mat-card id="checkbox" title="Checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
+          <mat-card id="checkbox" title="Checkbox" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Checkbox Question: ', type: 'checkbox', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', questionOptions: [{name: 'New Option'}]}}">
               <mat-icon>check_box</mat-icon>
           </mat-card>
-          <mat-card id="grid" title="Grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: false, responseRequired: false, padding: '0px 0px 0px 0px', color: '#262626', align: 'flex-start', gridType: 'radio', headerBackground: '#7f7f7f', headerColor: '#262626', leftColumnBackground: '#ffffff', leftColumnColor: '#262626', questionOptions: [{name: 'New Option'}], ratings: [{name: 'New Rating'}]}}">
+          <mat-card id="grid" title="Grid" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Grid question: ', type: 'grid', options: {hideQuestion: false, responseRequired: false, sidePadding: '0px', verticalPadding: '0px', color: '#262626', align: 'flex-start', gridType: 'radio', headerBackground: '#7f7f7f', headerColor: '#262626', leftColumnBackground: '#ffffff', leftColumnColor: '#262626', questionOptions: [{name: 'New Option'}], ratings: [{name: 'New Rating'}]}}">
             <mat-icon>view_module</mat-icon>
           </mat-card>
         </section>
       </mat-tab>
       <mat-tab label="Elements">
         <section id="elementBank">
-          <mat-card id="header" title="Heading" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Heading', type: 'heading', size: 'h1', color: '#262626', align: 'flex-start', padding: '0px 0px 0px 0px'}">
+          <mat-card id="header" title="Heading" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Heading', type: 'heading', size: 'h1', color: '#262626', align: 'flex-start', sidePadding: '0px', verticalPadding: '0px'}">
             <mat-icon>title</mat-icon>
           </mat-card>
-          <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph', size: '14px', color: '#262626', padding: '0px 0px 0px 0px', align: 'flex-start'}">
+          <mat-card id="paragraph" title="Text Block" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Lorem ipsum dolor sit amet', type: 'paragraph', size: '14px', color: '#262626', sidePadding: '0px', verticalPadding: '0px', align: 'flex-start'}">
             <mat-icon>text_fields</mat-icon>
           </mat-card>
-          <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image', width: '80%', align: 'flex-start', padding: '0px 0px 0px 0px'}">
+          <mat-card id="image" title="Image" dnd-draggable [dragEnabled]="true" [dragData]="{src: '../../assets/placeholder.png', type: 'image', width: '80%', align: 'flex-start', sidePadding: '0px', verticalPadding: '0px'}">
             <mat-icon>image</mat-icon>
           </mat-card>
-          <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider', width: '80%', borderWidth: '3px', borderStyle: 'solid', color: '#262626', align: 'flex-start', padding: '0px 0px 0px 0px'}">
+          <mat-card id="divider" title="Divider" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'divider', width: '80%', borderWidth: '3px', borderStyle: 'solid', color: '#262626', align: 'flex-start', sidePadding: '0px', verticalPadding: '0px'}">
             <mat-icon>remove</mat-icon>
           </mat-card>
           <mat-card id="spacer" title="Spacer" dnd-draggable [dragEnabled]="true" [dragData]="{type: 'spacer', height: '10px'}">
             <mat-icon>crop_16_9</mat-icon>
           </mat-card>
-          <mat-card id="button" title="Submit Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Button', type: 'submit', backgroundColor: '#9f9f9f', color: '#262626', margin: '0px 0px 0px 0px', width: '100px', height: '25px', align: 'flex-start', hoverBackground: '#dddddd', hoverColor: '#ffffff', border: '1px solid #000000', borderRadius: '0px'}">
+          <mat-card id="button" title="Submit Button" dnd-draggable [dragEnabled]="true" [dragData]="{label: 'Button', type: 'submit', backgroundColor: '#9f9f9f', color: '#262626', size: '14px', sideMargin: '0px', verticalMargin: '0px', width: '100px', height: '25px', align: 'flex-start', hoverBackground: '#dddddd', hoverColor: '#ffffff', border: '1px solid #000000', borderRadius: '0px'}">
             <mat-icon>touch_app</mat-icon>
           </mat-card>
         </section>
@@ -294,7 +282,10 @@
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -326,7 +317,10 @@
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -358,7 +352,10 @@
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -387,7 +384,10 @@
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -419,7 +419,10 @@
         <input matInput [(ngModel)]="questionToEdit.options.placeholder" placeholder="Question Placeholder Text"> 
       </mat-form-field>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -448,7 +451,10 @@
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -461,7 +467,8 @@
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
         <input type="text" [(ngModel)]="option.name">
-        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>remove_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
     
@@ -473,7 +480,10 @@
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -486,7 +496,8 @@
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
         <input type="text" [(ngModel)]="option.name">
-        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>remove_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
     
@@ -498,7 +509,10 @@
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -511,7 +525,8 @@
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
         <input type="text" [(ngModel)]="option.name">
-        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>remove_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
     
@@ -522,13 +537,11 @@
       </mat-form-field>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.hideQuestion">Hide Question?</mat-slide-toggle>
       <mat-slide-toggle [(ngModel)]="questionToEdit.options.responseRequired">Answer Required?</mat-slide-toggle>
-      <p>Grid Type</p>
-      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.gridType">
-        <mat-button-toggle value="radio"><mat-icon>radio_button_checked</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="checkbox"><mat-icon>check_box</mat-icon></mat-button-toggle>
-      </mat-button-toggle-group>
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.options.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.options.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.options.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Question Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.options.color">
@@ -546,15 +559,22 @@
         <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
         <mat-button-toggle value="flex-end"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
+      <p>Grid Type</p>
+      <mat-button-toggle-group [(ngModel)]="questionToEdit.options.gridType">
+        <mat-button-toggle value="radio"><mat-icon>radio_button_checked</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="checkbox"><mat-icon>check_box</mat-icon></mat-button-toggle>
+      </mat-button-toggle-group>
       <p>Answer Options</p>
       <div id="questionOptionList" *ngFor="let option of questionToEdit.options.questionOptions; last as isLast;">
         <input type="text" [(ngModel)]="option.name">
-        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeQuestionOption(option)"><mat-icon>remove_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addQuestionOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
       <p>Rating Options</p>
       <div id="questionOptionList" *ngFor="let rating of questionToEdit.options.ratings; last as isLast;">
         <input type="text" [(ngModel)]="rating.name">
-        <button id="addInputButton" title="Add option" *ngIf="isLast" (click)="addRatingOption()"><mat-icon>add_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Remove option" (click)="removeRatingOption(rating)"><mat-icon>remove_circle_outline</mat-icon></button>
+        <button class="optionAddDelete" title="Add option" *ngIf="isLast" (click)="addRatingOption()"><mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
 
@@ -572,7 +592,10 @@
       <p>Text Color:</p>
       <input type="color" [(ngModel)]="questionToEdit.color">
       <mat-form-field>
-        <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
+        <input matInput [(ngModel)]="questionToEdit.sidePadding" placeholder="Left/Right Padding">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="questionToEdit.verticalPadding" placeholder="Top/Bottom Padding">
       </mat-form-field>
       <p>Alignment</p>
       <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
@@ -593,7 +616,10 @@
         <p>Text Color:</p>
         <input type="color" [(ngModel)]="questionToEdit.color">
         <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
+          <input matInput [(ngModel)]="questionToEdit.sidePadding" placeholder="Left/Right Padding">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.verticalPadding" placeholder="Top/Bottom Padding">
         </mat-form-field>
         <p>Alignment</p>
         <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
@@ -612,7 +638,10 @@
           <input matInput [(ngModel)]="questionToEdit.width" placeholder="Width in percentage">
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
+          <input matInput [(ngModel)]="questionToEdit.sidePadding" placeholder="Left/Right Padding">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.verticalPadding" placeholder="Top/Bottom Padding">
         </mat-form-field>
         <p>Alignment</p>
         <mat-button-toggle-group [(ngModel)]="questionToEdit.align">
@@ -634,7 +663,10 @@
           <input matInput [(ngModel)]="questionToEdit.borderStyle" placeholder="Border Style">
         </mat-form-field>
         <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.padding" placeholder="Padding">
+          <input matInput [(ngModel)]="questionToEdit.sidePadding" placeholder="Left/Right Padding">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.verticalPadding" placeholder="Top/Bottom Padding">
         </mat-form-field>
         <p>Border Color:</p>
         <input type="color" [(ngModel)]="questionToEdit.color">
@@ -667,7 +699,13 @@
         <p>Hover Text Color:</p>
         <input type="color" [(ngModel)]="questionToEdit.hoverColor">
         <mat-form-field>
-          <input matInput [(ngModel)]="questionToEdit.margin" placeholder="Margin">
+          <input matInput [(ngModel)]="questionToEdit.size" placeholder="Font Size">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.sideMargin" placeholder="Left/Right Margin">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="questionToEdit.verticalMargin" placeholder="Top/Bottom Margin">
         </mat-form-field>
         <mat-form-field>
           <input matInput [(ngModel)]="questionToEdit.width" placeholder="Button Width">

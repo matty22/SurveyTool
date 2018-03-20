@@ -22,7 +22,8 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
     options: {
       hideQuestion: '', 
       responseRequired: '', 
-      padding: '', 
+      sidePadding: '', 
+      verticalPadding: '',
       color: '', 
       align: '', 
       questionOptions: [],
@@ -48,6 +49,7 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
     this.editQuestionType = question.type;
   }
 
+  // Add question to survey
   addQuestionToSurvey($event) {
     this.surveylistService.addQuestionToSurvey(this.survey.id, $event.dragData);
   }
@@ -57,14 +59,26 @@ export class QuestionpanelComponent implements OnInit, OnChanges {
       this.surveylistService.deleteQuestion(survey, question);
   }
 
-  // This is a temporary hacky solution to fix my problem with adding radio, checkbox, and grid question options
+  // Add a question option to a question type that has options - select, radio, checkbox, grid
   addQuestionOption() {
     this.questionToEdit.options.questionOptions.push({name: " "});
   }
 
-  // This is a temporary hacky solution to fix my problem with adding grid rating options
+  // Remove option from a question type that has options - select, radio, checkbox, grid
+  removeQuestionOption(option) {
+    let index = this.questionToEdit.options.questionOptions.indexOf(option);
+    this.questionToEdit.options.questionOptions.splice(index, 1);
+  }
+
+  // Add a rating to a grid type question
   addRatingOption() {
     this.questionToEdit.options.ratings.push({name: " "});
+  }
+
+  // Remove ratings from grid type questions
+  removeRatingOption(rating) {
+    let index = this.questionToEdit.options.ratings.indexOf(rating);
+    this.questionToEdit.options.ratings.splice(index, 1);
   }
 
   // This exports the HTML and necessary CSS for the survey to display as expected
