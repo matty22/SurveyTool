@@ -269,7 +269,7 @@
   </div>
   
   <!--  QUESTION SETTINGS SIDENAV -->
-  <mat-sidenav position="end" #sidenav (close)="tempQuestionOptions = [' ']" (close)="tempRatings = [' ']" [ngSwitch]="editQuestionType">
+  <mat-sidenav position="end" #sidenav [ngSwitch]="editQuestionType">
     
     <!-- TEXT CONTROL --> 
     <div class="questionSettingsSideNavForm" *ngSwitchCase="'text'">
